@@ -21,23 +21,23 @@
             <nav class="navbar navbar-expand-md row">
                 <div class="container-fluid">  
                     <!--Logo-->
-                    <div class="col-md-8 mx-auto ms-2 me-2 nav-item">
-                        <a class="navbar-brand" href="{% url 'home' %}">Eco Era Store</a>
-                        </a>
+                    <div class="col-xs-3 col-md-2 logo">
+                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="media/img/logo.png" alt="Logo Eco Era StoreS"></a>
                     </div>
-                    <div class="col-md-4">
+                    <div class="d-none d-md-block col-md-6">
+                        <p class="logo-text">Eco Era Store</p></a>
+                    </div>
                     <!--Toggler Button-->
+                    <div class="col-xs-3 d-md-none">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
                     </button>
+                </div>
                     <!--Account Dropdown-->
-                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="col nav-item ml-auto">
-                        <ul class="navbar-nav">
-                            <li class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="col-xs-3 col-md-2 nav-item ml-auto dropdown">
+                                <a class="btn dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i><br>
                                     My Account
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,15 +52,14 @@
                                     <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
                                     {% endif %}
                                 </ul>
-                                </li>
-                        </ul>
+                      
                     </div>   
                                 
                         <!--Basket-->
-                        <div class="col nav-item ml-auto">
+                        <div class="col-xs-3 col-md-2 nav-item ml-auto">
                             <a class="{% if grand_total %} {% else %}{% endif %} btn" href="#">
                                     <div>
-                                        <i class="fas fa-shopping-cart fa-lg"></i>
+                                        <i class="fas fa-shopping-cart fa-lg"></i><br>
                                         <span class="nav-text">{% if grand_total %}
                                             €{{ grand_total|floatformat:2 }}
                                             {% else %}
@@ -75,7 +74,11 @@
                 
             </nav>
             
-   
+   <!--Toggler Button-->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                    </button>
             <div class="nav-content">
                 <ul>
                     <li class="btn"><a href="#">Washable wipes</a></li>
