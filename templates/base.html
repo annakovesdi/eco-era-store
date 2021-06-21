@@ -21,21 +21,21 @@
             <nav class="navbar navbar-expand-md row">
                 <div class="container-fluid">  
                     <!--Logo-->
-                    <div class="col-xs-3 col-md-2 logo">
+                    <div class="col-xs col-md-2 logo">
                         <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="media/img/logo.png" alt="Logo Eco Era StoreS"></a>
                     </div>
                     <div class="d-none d-md-block col-md-6">
-                        <p class="logo-text">Eco Era Store</p></a>
+                        <a href="{% url 'home' %}"><p class="logo-text">Eco Era Store</p></a>
                     </div>
                     <!--Toggler Button-->
-                    <div class="col-xs-3 d-md-none">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                    </button>
+                    <div class="col-xs d-md-none">
+                    <a class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i><br>
+                            Menu
+                        </a>
                 </div>
                     <!--Account Dropdown-->
-                    <div class="col-xs-3 col-md-2 nav-item ml-auto dropdown">
+                    <div class="col-xs col-md-2 nav-item ml-auto dropdown">
                                 <a class="btn dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i><br>
                                     My Account
@@ -56,7 +56,7 @@
                     </div>   
                                 
                         <!--Basket-->
-                        <div class="col-xs-3 col-md-2 nav-item ml-auto">
+                        <div class="col-xs col-md-2 nav-item ml-auto">
                             <a class="{% if grand_total %} {% else %}{% endif %} btn" href="#">
                                     <div>
                                         <i class="fas fa-shopping-cart fa-lg"></i><br>
@@ -73,26 +73,7 @@
                      </div>  
                 
             </nav>
-            
-   <!--Toggler Button-->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-                    </button>
-            <div class="nav-content">
-                <ul>
-                    <li class="btn"><a href="#">Washable wipes</a></li>
-                    <li class="btn"><a href="#">Washable cotton pads</a></li>
-                    <li class="btn"><a href="#">Washable nursing pads</a></li>
-                    <li class="btn"><a href="#">Washable sanitary pads</a></li>
-                    <li class="btn"><a href="#">Blankets</a></li>
-                    <li class="btn"><a href="#">How to use?</a></li>
-                    <li class="btn"><a href="#">Information</a></li>
-                    <li class="btn"><a href="#">Giftcard</a></li>
-                </ul>
-            </div>
-            </div>
-            </nav>
+            {% include 'includes/navbar_lower.html' %}
             </header>
             
     {% if messages %}
@@ -107,7 +88,9 @@
     {% endblock %}
     
     <footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     {% block js %}
     {% endblock %}
     
