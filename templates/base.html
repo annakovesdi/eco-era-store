@@ -17,64 +17,9 @@
 
 <body>
     <header>
-        <!--Navigation bar upper row-->
-            <nav class="navbar navbar-expand-md row">
-                <div class="container-fluid">  
-                    <!--Logo-->
-                    <div class="col-xs col-md-2 logo">
-                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="media/img/logo.png" alt="Logo Eco Era StoreS"></a>
-                    </div>
-                    <div class="d-none d-md-block col-md-6">
-                        <a href="{% url 'home' %}"><p class="logo-text">Eco Era Store</p></a>
-                    </div>
-                    <!--Toggler Button-->
-                    <div class="col-xs d-md-none">
-                    <a class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars"></i><br>
-                            Menu
-                        </a>
-                </div>
-                    <!--Account Dropdown-->
-                    <div class="col-xs col-md-2 nav-item ml-auto dropdown">
-                                <a class="btn dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user-circle"></i><br>
-                                    My Account
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                    <li><a class="dropdown-item" href="#">Product Management</a></li>
-                                    {% endif %}
-                                    <li><a class="dropdown-item" href="#">My Profile</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
-                                    {% else %}
-                                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
-                                    {% endif %}
-                                </ul>
-                      
-                    </div>   
-                                
-                        <!--Basket-->
-                        <div class="col-xs col-md-2 nav-item ml-auto">
-                            <a class="{% if grand_total %} {% else %}{% endif %} btn" href="#">
-                                    <div>
-                                        <i class="fas fa-shopping-cart fa-lg"></i><br>
-                                        <span class="nav-text">{% if grand_total %}
-                                            €{{ grand_total|floatformat:2 }}
-                                            {% else %}
-                                            €0.00
-                                            {% endif %}
-                                        </span>
-                                    </div>
-                                </a>
-                                </div>
-                        </div>
-                     </div>  
-                
-            </nav>
-            {% include 'includes/navbar_lower.html' %}
-            </header>
+        {% include 'includes/navbar_upper.html' %}
+        {% include 'includes/navbar_lower.html' %}
+    </header>
             
     {% if messages %}
     <div>
@@ -88,13 +33,12 @@
     {% endblock %}
     
     <footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    {% block js %}
-    {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        {% block js %}
+        {% endblock %}
+    </footer>
     
-    
-    </body>
-    
-    </html>
+</body>
+</html>
