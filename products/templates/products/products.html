@@ -2,5 +2,28 @@
 {% load static %}
 
 {% block content %}
-   {{ products }}
+<section>
+    <div class="row banner">
+        <div class="col">
+            <p class="black-banner">Free shipping from 30, - in The Netherlands</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="">
+        <h2></h2>
+    </div>
+    {% for product in products %}
+    <div class="container">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ product.image.url }}"  alt="Image of {{ product.name }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">€{{ product.price }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+    </section>
+   {% endfor %}
 {% endblock %}
