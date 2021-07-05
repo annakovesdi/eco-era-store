@@ -15,7 +15,7 @@ body {
 }
 
 h1 {
-    margin: 20px;
+    font-size: 6vw;
 }
 
 a {
@@ -33,6 +33,11 @@ i {
 
 p {
     margin: 0;
+}
+
+.basic-button {
+    border: 1px solid black;
+    background-color: rgba(130, 156, 176, 0.35);
 }
 
 /*------------------------Navbar*/
@@ -85,6 +90,42 @@ li::marker {
 
 /*------------------------Index*/
 
+.hero {
+    width: 100vw;
+    height: 70vh;
+    position: relative;
+    overflow: hidden;
+    object-fit: contain;
+}
+
+#vimeohero iframe {
+    position: absolute;
+    width: 100vw;
+    overflow: hidden;
+    height: 56.25vw;
+    pointer-events:none;
+    text-align: center;
+}
+
+.overlay {
+    height: 56.25vw;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.35); 
+    position: absolute;
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.title {
+    color: #829CB0;
+    text-transform: uppercase;
+    font-size: 3vw;
+    text-align: right;
+    position: relative;
+    margin-left: 60%;
+}
 
 
 

@@ -2,6 +2,19 @@
 {% load static %}
 
 {% block content %}
-    <h1>Eco Era Store</h1>
-    <a href="" class="btn btn-large text-uppercase">Shop now</a>
+ <div class="section hero">
+                <div id="vimeohero">
+                <iframe src="https://player.vimeo.com/video/567844806?autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" style="top:auto;left:auto;" frameborder="0" allow=autoplay ?muted=1 ?controls=0 loop=1 autoplay=1 allowfullscreen></iframe>
+                 </div>
+             <div class="overlay">
+                <div class="title">
+                <h1>Eco Era Store</h1>
+                <a href="" class="basic-button btn btn-large text-uppercase">Shop now</a>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block js %}
+<script src="https://player.vimeo.com/api/player.js"></script>
 {% endblock %}
