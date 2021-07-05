@@ -11,20 +11,18 @@
 </section>
 <section>
     <div class="">
-        <h2></h2>
+        <h2>{{ product.category }}</h2>
     </div>
-    {% for product in products %}
     <div class="container">
-    <div class="card" style="width: 18rem;">
-        <a href="{% url 'product_detail' product.id %}">
-        <img class="card-img-top" src="{{ product.image.url }}"  alt="Image of {{ product.name }}"></a>
+    <div class="card" style="width: 100%;">
+        <img class="card-img-top" src="{{ product.image.url }}"  alt="Image of {{ product.name }}">
         <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">€{{ product.price }}</p>
+            <p class="card-text">€{{ product.description }}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
 </div>
     </section>
-   {% endfor %}
 {% endblock %}
