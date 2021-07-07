@@ -37,7 +37,7 @@
                                 
                         <!--Basket-->
                         <div class="col-xs col-md-1 nav-item ml-auto">
-                            <a class="{% if grand_total %} {% else %}{% endif %} btn" href="#">
+                            <a class="{% if grand_total %} {% else %}{% endif %} btn" href="{% url 'view_bag'%}">
                                     <div>
                                         <i class="fas fa-shopping-cart fa-lg"></i><br>
                                         <span class="nav-text">{% if grand_total %}
