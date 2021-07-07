@@ -7,25 +7,28 @@
                         Eco & Washable
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Wipes</a>
-                        <a class="dropdown-item" href="#">Cotton Pads</a>
-                        <a class="dropdown-item" href="#">Nursing Pads</a>
-                        <a class="dropdown-item" href="#">Sanitary Pads</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=wipes">Wipes</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=cotton_pads">Cotton Pads</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=nursing_pads">Nursing Pads</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=sanitary_pads">Sanitary Pads</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">How to use?</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=how_to">How to use?</a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blankets</a>
+                    <a class="nav-link" href="{% url 'products' %}?category=oils_and_sprays">Oils and Spray Bottles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Guest Products</a>
+                    <a class="nav-link" href="{% url 'products' %}?category=blankets">Blankets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Information</a>
+                    <a class="nav-link" href="{% url 'products' %}?category=guest_products">Guest Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'products' %}?category=information">Information</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="#">Gift Card</a>
+                    <a class="nav-link" href="{% url 'products' %}?category=giftcard">Gift Card</a>
                 </li>
                  <li class="nav-item">
                     <a class="nav-link" href="{% url 'products' %}">All Products</a>
