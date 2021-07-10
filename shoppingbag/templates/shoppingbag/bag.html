@@ -9,8 +9,26 @@
 <h2>Shopping bag</h2>
 {% if bag_items %}
 <div>
-    <p>{{ bag_items }}</p>
+    <div>
+        {% for item in bag_items %}
+        <img src="{{ item.product.image.url }}" alt="Image of {{ item.product.name }}">
+        <p>{{ item.product.name }}</p>
+        <p>{{ item.product.price }}</p>
+        <p>{{ item.quantity }}</p>
+        <p>{{ item.product.price }}</p>
+        {% endfor %}
+    </div>
 </div>
+<div>
+    <p>Bag Total: €{{ total|floatformat:2 }}</p>
+    <p>Delivery: €{{ delivery|floatformat:2 }}</p>
+    <p>Grand Total: €{{ grand_total|floatformat:2 }}</p>
+    {% if free_delivery_delta > 0 %}
+        <p>You could get free delivery by spending just €{{ free_delivery_delta|floatformat:2 }} more!</p>
+    {% endif %}
+</div>
+<a href="{% url 'products' %}">Keep Shopping</a>
+<a href="">Secure Checkout</a>
 {% else %}
 <div>
     <p>Your shopping bag is empty</p>
@@ -18,10 +36,6 @@
 </div>
 {% endif %}
 
-{{delivery}}
-{{total}}
-{{grand_total}}
-{{free_delivery_delta}}
 
 
 {% endblock %}
