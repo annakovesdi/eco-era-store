@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block content %}
 <h2>Shopping bag</h2>
@@ -27,7 +28,7 @@
        </form>
     </div>
      <div class="col-2">
-        <p>{{ item.product.price }}</p>
+        <p>{{ item.product.price | calc_subtotal:item.quantity }}</p>
      </div>
      <div class="col-2">
         <a  class="update-bag">Update</a>
