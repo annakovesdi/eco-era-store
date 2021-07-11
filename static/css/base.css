@@ -144,6 +144,12 @@ li::marker {
     padding: 5px;
 }
 
+/*------------------------Shopping Bag*/
+
+img.shoppingbag-image {
+        max-width: inherit;
+}
+
 
 /*------------------------Media Queries*/
 

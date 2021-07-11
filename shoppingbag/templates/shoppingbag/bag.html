@@ -2,23 +2,41 @@
 {% load static %}
 
 {% block content %}
- 
-{% endblock %}
-
-{% block js %}
 <h2>Shopping bag</h2>
 {% if bag_items %}
-<div>
-    <div>
+
+    <div class="container bag-background">
+        <div class="row">
         {% for item in bag_items %}
-        <img src="{{ item.product.image.url }}" alt="Image of {{ item.product.name }}">
+        <div class="col-2">
+        <img class="shoppingbag-image" src="{{ item.product.image.url }}" alt="Image of {{ item.product.name }}">
+        </div>
+         <div class="col-2">
         <p>{{ item.product.name }}</p>
+    </div>
+     <div class="col-2">
         <p>{{ item.product.price }}</p>
-        <p>{{ item.quantity }}</p>
+    </div>
+     <div class="col-2">
+       <form class="update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
+           {% csrf_token %}
+           <div>
+            <p>Quantity:</p>
+                    <input class="form-control" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
+                </div>
+       </form>
+    </div>
+     <div class="col-2">
         <p>{{ item.product.price }}</p>
+     </div>
+     <div class="col-2">
+        <a  class="update-bag">Update</a>
+        <a  class="remove-item" id="remove_{{ item.item_id }}">Remove</a>
+    </div>
         {% endfor %}
     </div>
-</div>
+    
+
 <div>
     <p>Bag Total: €{{ total|floatformat:2 }}</p>
     <p>Delivery: €{{ delivery|floatformat:2 }}</p>
@@ -34,8 +52,28 @@
     <p>Your shopping bag is empty</p>
     <button>Shop now</button>
 </div>
+</div>
 {% endif %}
+{% endblock %}
 
+{% block js %}
 
+<script>  
+        $('.update-bag').click(function(e) {
+            $('form.update-form').submit();
+        });
 
+        //delete item from bag
+     $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/shoppingbag/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+        });
+</script>
 {% endblock %}
