@@ -55,12 +55,26 @@ nav.navbar {
 
 .logo-image {
     max-height: 60px;
+    transition: transform 1s;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+}
+
+.logo-big-image {
+    max-height: 150px;
+    transition: transform 0.5s;
+}
+
+.logo-big-image:hover {
+    transform: scale(1.05);
 }
 
 .logo-text {
     font-size: 15px;
     text-align: left;
-    color: black;
+    color: rgb(88, 127, 138);
 }
 
 .navbar-toggler {
@@ -69,6 +83,19 @@ nav.navbar {
 
 .my-account {
     text-align: center;
+    transition: transform 0.5s;
+}
+
+.my-account:hover {
+    transform: scale(1.05);
+}
+
+.bag {
+     transition: transform 0.5s;
+}
+
+.bag:hover {
+    transform: scale(1.05);
 }
 
 li::marker {
@@ -86,6 +113,19 @@ li::marker {
 
 .navbar-lower {
     border-bottom: 1px solid rgb(88, 127, 138);
+}
+
+.background-text {
+    max-height: 20px;
+}
+
+.nav-link {
+    transition: transform 0.5s;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: black;
+    transform: scale(1.05);
 }
 
 /*------------------------Index*/
@@ -112,19 +152,48 @@ li::marker {
     width: 100%;
     background: rgba(255, 255, 255, 0.35); 
     position: absolute;
-    display: flex;
     align-items: center;
     object-fit: contain;
     overflow: hidden;
+    text-align: center;
 }
 
 .title {
-    color: #829CB0;
-    text-transform: uppercase;
-    font-size: 3vw;
-    text-align: right;
-    position: relative;
-    margin-left: 60%;
+    margin: auto;
+    padding-top: 20%;
+    transition: transform 1s;
+}
+
+.title:hover {
+    transform: black;
+}
+
+.title-image {
+    max-width: 45%;
+    min-width: 300px;
+}
+
+.hero-hr {
+    border: 1px solid white;
+}
+
+.shop-now-button {
+    border-color: white;
+    color: white;
+    transition: transform 500ms ease-in-out 25ms;
+}
+
+.shop-now-button:hover {
+    color: black;
+    transform: scale(1.05);
+}
+
+.navbar-index {
+    text-align: center;
+}
+
+.margin-top {
+    margin-top: -80px;
 }
 
 /*------------------------Products*/
@@ -154,13 +223,28 @@ img.shoppingbag-image {
 /*------------------------Media Queries*/
 
 @media (min-width: 768px) {
-.navbar-expand-md .navbar-collapse {
-    min-width: 100%;
+    .navbar-expand-md .navbar-collapse {
+        min-width: 100%;
+    }
+    .logo-big-image {
+    max-height: 200px;
+    }
+    .display-mobile-nav {
+        display: none;
+    }
 }
+
+@media (min-width: 992px) {
+    .logo-big-image {
+    max-height: 250px;
+    }
 }
 
 @media (max-width: 768px) { 
     ul.nav.collapsible-navbar {
         display: table-cell;
+    }
+    .display-big-image {
+        display: none;
     }
  }

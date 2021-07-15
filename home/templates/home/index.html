@@ -1,18 +1,89 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
- <div class="section hero">
-                <div id="vimeohero">
-                <iframe src="https://player.vimeo.com/video/567844806?autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" style="top:auto;left:auto;" frameborder="0" allow=autoplay ?muted=1 ?controls=0 loop=1 autoplay=1 allowfullscreen></iframe>
-                 </div>
-             <div class="overlay">
-                <div class="title">
-                <h1>Eco Era Store</h1>
-                <a href="" class="basic-button btn btn-large text-uppercase">Shop now</a>
-                </div>
+{% block header %}
+<nav>
+    <div class="navbar navbar-expand-md row">
+        <div class="container-fluid">
+            <!--Logo-->
+            <div class="col-xs col-md-2 logo display-mobile-nav">
+                <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="../media/img/logo.png"
+                        alt="Logo"></a>
+            </div>
+            <!--Toggler Button-->
+            <div class="col-xs d-md-none">
+                <a class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                        class="fas fa-bars"></i><br>
+                    Menu
+                </a>
+            </div>
+            <!--Account Dropdown-->
+            <div class="col-xs col-md-2 nav-item dropdown my-account">
+                <a class="btn dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i><br>
+                    My Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <li><a class="dropdown-item" href="#">Product Management</a></li>
+                    {% endif %}
+                    <li><a class="dropdown-item" href="#">My Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!--Bag-->
+            <div class="col-xs col-md-1 nav-item ml-auto bag">
+                <a class="{% if grand_total %} {% else %}{% endif %} btn" href="{% url 'view_bag'%}">
+                    <div>
+                        <i class="fas fa-shopping-cart fa-lg"></i><br>
+                        <span class="nav-text">{% if grand_total %}
+                            €{{ grand_total|floatformat:2 }}
+                            {% else %}
+                            €0.00
+                            {% endif %}
+                        </span>
+                    </div>
+                </a>
             </div>
         </div>
+    </div>
+</div>
+<div>
+    <div class="display-big-image row justify-content-md-center ">
+        <a class="navbar-brand margin-top" href="{% url 'home' %}"><img class="logo-big-image"
+                    src="../media/img/logo.png" alt="Logo"></a>
+    </div>
+</div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="section hero">
+    <div id="vimeohero">
+        <iframe src="https://player.vimeo.com/video/567844806?autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1"
+            style="top:auto;left:auto;" frameborder="0" allow=autoplay ?muted=1 ?controls=0 loop=1 autoplay=1
+            allowfullscreen></iframe>
+    </div>
+    <div class="overlay">
+        <div class="title row">
+            <div class="col-12">
+                <img class="title-image" src="../media/img/matters.png" alt="An era that matters">
+            </div>
+        </div>
+        <hr class="hero-hr">
+        <div class="row">
+            <div class="col-12">
+                <a href="{% url 'products' %}" class="basic-button btn btn-large text-uppercase shop-now-button">Shop now</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}

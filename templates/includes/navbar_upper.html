@@ -6,7 +6,7 @@
                         <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="../media/img/logo.png" alt="Logo"></a>
                     </div>
                     <div class="d-none d-md-block col-md-7">
-                        <a href="{% url 'home' %}"><p class="logo-text">Eco Era Store</p></a>
+                        <a href="{% url 'home' %}"><img class="background-text" src="../media/img/outline.png" alt="Eco Era Store"></a>
                     </div>
                     <!--Toggler Button-->
                     <div class="col-xs d-md-none">
@@ -35,8 +35,8 @@
                       
                     </div>   
                                 
-                        <!--Basket-->
-                        <div class="col-xs col-md-1 nav-item ml-auto">
+                        <!--Bag-->
+                        <div class="col-xs col-md-1 nav-item ml-auto bag">
                             <a class="{% if grand_total %} {% else %}{% endif %} btn" href="{% url 'view_bag'%}">
                                     <div>
                                         <i class="fas fa-shopping-cart fa-lg"></i><br>

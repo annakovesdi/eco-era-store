@@ -17,7 +17,9 @@
 
 <body>
     <header>
-        {% include 'includes/navbar_upper.html' %}
+        {% block header %}
+            {% include 'includes/navbar_upper.html' %}
+        {% endblock %}
         {% include 'includes/navbar_lower.html' %}
     </header>
             
@@ -33,13 +35,11 @@
                     {% include 'includes/toasts/toast_success.html' %}
                 {% else %}
                     {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
             {% endwith %}
         {% endfor %}
     </div>
     {% endif %}
-    
-    {% block header %}
-    {% endblock %}
     
     {% block content %}
     {% endblock %}
