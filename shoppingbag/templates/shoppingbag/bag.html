@@ -47,7 +47,7 @@
     {% endif %}
 </div>
 <a href="{% url 'products' %}">Keep Shopping</a>
-<a href="">Secure Checkout</a>
+<a href="{% url 'checkout' %}">Secure Checkout</a>
 {% else %}
 <div>
     <p>Your shopping bag is empty</p>
