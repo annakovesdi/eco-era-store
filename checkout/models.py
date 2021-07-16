@@ -14,10 +14,11 @@ class Order(models.Model):
     full_name = models.CharField(max_length=60, null=False, blank=False)
     email = models.EmailField(max_length=50, null=False, blank=False)
     phone_number = models.CharField(max_length=13, null=False, blank=False)
-    street_address1 = models.CharField(max_length=80, null=False, blank=False)
+    street_address = models.CharField(max_length=80, null=False, blank=False)
     house_number = models.CharField(max_length=10, null=False, blank=False)
+    addition = models.CharField(max_length=5, null=True, blank=True)
     postcode = models.CharField(max_length=6, null=False, blank=False)
-    town_or_city = models.CharField(max_length=40, null=False, blank=False)
+    city = models.CharField(max_length=40, null=False, blank=False)
     country = models.CharField(max_length=20, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(
