@@ -84,9 +84,10 @@ nav.navbar {
 .my-account {
     text-align: center;
     transition: transform 0.5s;
+    z-index: 99999999;
 }
 
-.my-account:hover {
+.my-account:hover,  .my-account:focus {
     transform: scale(1.05);
 }
 
