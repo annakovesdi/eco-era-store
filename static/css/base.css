@@ -11,11 +11,36 @@ body {
     color: black;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 h1 {
     font-size: 6vw;
+}
+
+h2 {
+    color: black;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 40px;
+    letter-spacing: 2px;
+}
+
+h3 {
+    color: #4c5861;
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+    text-align: center;
+}
+
+h4 {
+    color: black;
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    text-transform: uppercase;
 }
 
 a {
@@ -35,17 +60,103 @@ p {
     margin: 0;
 }
 
-.basic-button {
+input[type="checkbox"] {
+    color: #E2E8E3;
+    background-color: white;
     border: 1px solid black;
-    background-color: rgba(130, 156, 176, 0.35);
+    margin-left: 5px;
 }
+
+input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 0.25rem rgb(197 217 224 / 25%);
+}
+
+input[type="checkbox"]:checked {
+    color: #E2E8E3;
+    background-color: black;
+    border: 1px solid black;
+}
+
+.center {
+    text-align: center;
+}
+
+.margin-bottom {
+    margin-bottom: 10px;
+}
+
+/*-------------------------Button*/
+/* Button by https://ianlunn.github.io/Hover/#effects, Border Transitions, Outline Out Button, MIT license*/
+
+.buttons {
+    text-align: center;
+    padding: 20px;
+}
+
+.basic-button:before {
+    content: '';
+    position: absolute;
+    border: #d8dee3 solid 2px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: top, right, bottom, left;
+    transition-property: top, right, bottom, left;
+}
+
+.basic-button {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Abel', sans-serif;
+    background-color: #d8dee3;
+    border: 1px solid #d8dee3;
+    padding: 1em;
+    border-radius: 0;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    position: relative;
+    margin: .4em;
+}
+
+.basic-button:hover:before, .basic-button:focus:before, .basic-button:active:before {
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+}
+
+.basic-button:hover {
+    margin: .4em;
+    padding: 1em;
+    cursor: pointer;
+    background: #d8dee3;
+    text-decoration: none;
+    color: #666;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+}
+
+.warning-button {
+
+}
+
+.action-button {
+    
+}
+
 
 /*------------------------Navbar*/
 
 nav.navbar {
     padding: 0;
     font-family: 'Abel', sans-serif;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #d8dee3;
 }
 
 .logo {
@@ -179,14 +290,17 @@ li::marker {
 }
 
 .shop-now-button {
-    border-color: white;
+    background-color: rgba(0, 0, 0, 0.1);
     color: white;
     transition: transform 500ms ease-in-out 25ms;
 }
 
-.shop-now-button:hover {
-    color: black;
+.shop-now-button:hover,
+.shop-now-button:focus {
+    text-shadow: 0 0 1px rgb(250, 247, 247), 0 0 1px #E2E8E3;
     transform: scale(1.05);
+    outline: none!important;
+    box-shadow: 0 0px 10px rgba(255, 255, 255, 0.2);
 }
 
 .navbar-index {

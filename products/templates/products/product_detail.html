@@ -29,12 +29,9 @@
                 </div>
                 <div class="input-group-append"></div>
                 <div>
-                    <a href="{% url 'products' %}">
-                        <span>
-                            <i></i> Keep Shopping
-                        </span>
-                    </a>
-                    <input type="submit" value="Add to cart">
+                    <div class="buttons">
+                        <a href="{% url 'products' %}" class="btn basic-button">Keep Shopping</a></div>
+                        <button type="submit" class="btn basic-button">Add to cart</button></div>
                 </div>
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </form>
