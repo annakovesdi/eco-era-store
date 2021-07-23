@@ -179,7 +179,7 @@ nav.navbar {
 }
 
 .logo-big-image {
-    max-height: 150px;
+    max-height: 75px;
     transition: transform 0.5s;
 }
 
@@ -187,10 +187,12 @@ nav.navbar {
     transform: scale(1.05);
 }
 
+.logo-big {
+    padding-top: 0;
+}
+
 .logo-text {
-    font-size: 15px;
-    text-align: left;
-    color: rgb(88, 127, 138);
+    padding-left: 4%;
 }
 
 .navbar-toggler {
@@ -245,6 +247,20 @@ li::marker {
     transform: scale(1.05);
 }
 
+.icon-button {
+    font-size: 16px;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    line-height: 1.5;
+}
+
+.icon {
+    font-size: 23px;
+        line-height: 1;
+}
+
+
+
 /*------------------------Index*/
 
 .hero {
@@ -277,7 +293,7 @@ li::marker {
 
 .title {
     margin: auto;
-    padding-top: 20%;
+    padding-top: 1%;
     transition: transform 1s;
 }
 
@@ -315,6 +331,11 @@ li::marker {
 .margin-top {
     margin-top: -80px;
 }
+
+.logo-text {
+
+}
+
 
 /*------------------------Products*/
 
@@ -363,6 +384,7 @@ img.shoppingbag-image {
     }
     .logo-big-image {
     max-height: 200px;
+    margin-bottom: 20px;
     }
     .display-mobile-nav {
         display: none;
@@ -373,13 +395,22 @@ img.shoppingbag-image {
     .logo-big-image {
     max-height: 250px;
     }
+    .logo-big {
+    padding-top: 3%;
+    }
 }
 
 @media (max-width: 767px) { 
-    ul.nav.collapsible-navbar {
-        display: table-cell;
-    }
     .display-big-image {
         display: none;
+    }
+    .title {
+        padding-top: 20%;
+    }
+ }
+
+ @media (max-width: 991px) {
+     ul.nav.collapsible-navbar {
+        display: table-cell;
     }
  }

@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-md navbar-lower">
+<nav class="navbar navbar-expand-lg navbar-lower">
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="nav collapsible-navbar">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="ecoWashable" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Eco & Washable
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu" aria-labelledby="ecoWashable">
                         <a class="dropdown-item" href="{% url 'products' %}?category=wipes">Wipes</a>
                         <a class="dropdown-item" href="{% url 'products' %}?category=cotton_pads">Cotton Pads</a>
                         <a class="dropdown-item" href="{% url 'products' %}?category=nursing_pads">Nursing Pads</a>
@@ -22,10 +22,23 @@
                     <a class="nav-link" href="{% url 'products' %}?category=blankets">Blankets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products' %}?category=guest_products">Guest Products</a>
+                    <a class="nav-link" href="{% url 'products' %}?category=new_arrivals">New Arrivals</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'products' %}?category=information">Information</a>
+                    <a class="nav-link" href="{% url 'products' %}?category=guest_products">Guest Products</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="information" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Information
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="information">
+                        <a class="dropdown-item" href="{% url 'products' %}?category=our_story">Our Story</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=shipment">Shipment</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=return_policy">Return Policy</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=privacy">Privacy</a>
+                        <a class="dropdown-item" href="{% url 'products' %}?category=contact">Contact</a>
+                    </div>
                 </li>
                  <li class="nav-item">
                     <a class="nav-link" href="{% url 'products' %}?category=giftcard">Gift Card</a>
