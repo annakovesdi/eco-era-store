@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
 {% block content %}
 <section>
     <div class="row banner">
@@ -9,10 +13,14 @@
         </div>
     </div>
 </section>
+{% for category in categories %}
+      <h2>{{ category.fiendly_name }}</h2>
+      <p>{{ product.category.description }}</p>
+{% endfor %}
 <section>
-    <h2>All Products</h2>
+  
     <div class="container-fluid">
-        <div class="row">
+        <div class="row happy">
             {% for product in products %}
                 <div class="col-12 col-md-6 col-lg-3 my-2">
                     <div class="card">
@@ -21,9 +29,9 @@
                         </a>
                         <div class="card-body">
                             <h3 class="card-title">{{ product.category.friendly_name }} - {{ product.name }}</h3>
-                            <hr>
-                            <p class="card-text center">€{{ product.price }}</p>
-                            <div class="center padding-5">
+                            <hr class="d-none d-md-block">
+                            <p class="card-text center padding-5">€{{ product.price }}</p>
+                            <div class="d-none d-md-block center padding-5">
                                 <a href="{% url 'product_detail' product.id %}" class="btn basic-button">See more</a>
                             </div>
                         </div>

@@ -58,6 +58,13 @@ i {
 
 p {
     margin: 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+hr {
+    color: #dedcd3;
+    opacity: 1;
 }
 
 input[type="checkbox"] {
@@ -81,6 +88,15 @@ input[type="checkbox"]:checked {
     text-align: center;
 }
 
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+
 .margin-bottom {
     margin-bottom: 10px;
 }
@@ -88,6 +104,8 @@ input[type="checkbox"]:checked {
 .padding-5 {
     padding: 5px;
 }
+
+
 
 /*-------------------------Button*/
 /* Button by https://ianlunn.github.io/Hover/#effects, Border Transitions, Outline Out Button, MIT license*/
@@ -336,9 +354,6 @@ li::marker {
 
 }
 
-
-/*------------------------Products*/
-
 .banner {
     --bs-gutter-x: 0;
     margin: 0;
@@ -352,21 +367,6 @@ li::marker {
     font-family: 'Abel', sans-serif;
     font-size: 16px;
     padding: 5px;
-}
-
-.card {
- 
-}
-
-.card-body {
-    padding: 0;
-}
-
-.card-img {
-    height: 300px;
-    overflow: hidden;
-    object-fit: cover;
-    margin-bottom: 5px;
 }
 
 /*------------------------Shopping Bag*/
