@@ -113,8 +113,6 @@ input[type="checkbox"]:checked {
     padding: 5px;
 }
 
-
-
 /*-------------------------Button*/
 /* Button by https://ianlunn.github.io/Hover/#effects, Border Transitions, Outline Out Button, MIT license*/
 
@@ -172,15 +170,13 @@ input[type="checkbox"]:checked {
     -webkit-font-smoothing: antialiased;
 }
 
-.warning-button {
-
+.little-button,
+.little-button:hover {
+    margin: 0;
+    padding: 0;
+    margin-top: 23px;
+    margin-right: 10px;
 }
-
-.action-button {
-    
-}
-
-
 /*------------------------Navbar*/
 
 nav,
@@ -379,8 +375,24 @@ li::marker {
 
 /*------------------------Shopping Bag*/
 
-img.shoppingbag-image {
-    max-width: inherit;
+.shoppingbag-image {
+    width: 80%;
+    max-height: 70px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.little-icon{
+    color: white;
+    font-size: 14px;
+}
+
+.checkout-button {
+    background-color: #c2bda9;
 }
 
 /*------------------------Toasts*/

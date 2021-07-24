@@ -8,46 +8,72 @@
 
     <div class="container bag-background">
         <div class="row">
+            <div class="col-2">
+                <h4 class="center">Item in bag</h4>
+            </div>
+            <div class="col-2">
+                <h4 class="center">Name</h4>
+            </div>
+            <div class="col-2">
+                <h4 class="center">Price</h4>
+            </div>
+            <div class="col-2">
+                <h4 class="center">Quantity</h4>
+            </div>
+            <div class="col-2">
+                <h4 class="center">Subtotal</h4>
+            </div>
+            <div class="col-2">
+                <h4 class="center">Update bag</h4>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
         {% for item in bag_items %}
         <div class="col-2">
         <img class="shoppingbag-image" src="{{ item.product.image.url }}" alt="Image of {{ item.product.name }}">
         </div>
-         <div class="col-2">
-        <p>{{ item.product.name }}</p>
+         <div class="col-2 margin-auto">
+        <h5>{{ item.product.name }}</h5>
     </div>
-     <div class="col-2">
-        <p>{{ item.product.price }}</p>
+     <div class="col-2 margin-auto">
+        <h5 class="center">€{{ item.product.price }}</h5>
     </div>
-     <div class="col-2">
+     <div class="col-2 margin-auto">
        <form class="update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
            {% csrf_token %}
            <div>
-            <p>Quantity:</p>
+            <h5 class="center">Quantity:</h5>
                     <input class="form-control" type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
                 </div>
        </form>
     </div>
-     <div class="col-2">
-        <p>{{ item.product.price | calc_subtotal:item.quantity }}</p>
+     <div class="col-2 margin-auto">
+        <h5 class="center">{{ item.product.price | calc_subtotal:item.quantity }}</h5>
      </div>
-     <div class="col-2">
-        <a  class="update-bag">Update</a>
-        <a  class="remove-item" id="remove_{{ item.item_id }}">Remove</a>
+     <div class="col-2 center">
+        <a  class="update-bag btn basic-button little-button"><i class="fas fa-pencil-alt little-icon"></i></a>
+        <a  class="remove-item btn basic-button little-button" id="remove_{{ item.item_id }}"><i class="far fa-trash-alt little-icon"></i></a>
     </div>
         {% endfor %}
     </div>
-    
+    <hr>
 
-<div>
-    <p>Bag Total: €{{ total|floatformat:2 }}</p>
-    <p>Delivery: €{{ delivery|floatformat:2 }}</p>
-    <p>Grand Total: €{{ grand_total|floatformat:2 }}</p>
+<div class="payment-total">
+    <h4 class="right">Bag Total: €{{ total|floatformat:2 }}</h4>
+    <h4 class="right">Delivery: €{{ delivery|floatformat:2 }}</h4>
+    <h4 class="right">Grand Total: €{{ grand_total|floatformat:2 }}</h4>
+    <br class="padding-5">
     {% if free_delivery_delta > 0 %}
-        <p>You could get free delivery by spending just €{{ free_delivery_delta|floatformat:2 }} more!</p>
+        <p class="right">You could get free delivery by spending just €{{ free_delivery_delta|floatformat:2 }} more!</p>
     {% endif %}
+    <br class="padding-5">
 </div>
-<a href="{% url 'products' %}">Keep Shopping</a>
-<a href="{% url 'checkout' %}">Secure Checkout</a>
+<div class="right">
+     <a href="{% url 'products' %}" class="btn basic-button">Keep Shopping</a>
+     <a href="{% url 'checkout' %}" class="btn basic-button checkout-button">Secure Checkout</a>
+</div>
+
 {% else %}
 <div>
     <p>Your shopping bag is empty</p>
