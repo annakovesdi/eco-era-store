@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bag_tools %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Thank you for your order</h2>
+<h3>Your order number is {{ order.order_number }}. A confirmation email will be sent to {{ order.email }}</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6" id="order-summary">
+        <h3>Order Summary: <strong>{{ product_count }}</strong> items in shoppingbag</h3>
+        {% for item in bag_items %}
+        <div class="row">
+            <div class="col-4">
+                <a href="{% url 'product_detail' item.product.id %}">
+                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                </a>
+            </div>
+            <div class="col-4 product-name">
+                <h4>{{ item.product.name }}</h4>
+                <p>Qantity: {{ item.quantity }}</p>
+            </div>
+            <div class="col-4 price">
+                <p>${{ item.product.price | calc_subtotal:item.quantity }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+        <div class="row order-total">
+        <div class="col">
+            <p>Order Total: {{ total | floatformat:2 }}</p>
+            <p>Delivery: {{ delivery | floatformat:2 }}</p>
+            <p><strong>Grand Total: {{ grand_total | floatformat:2 }}</strong></p>
+            <hr>
+        </div>
+        </div>
+    </div>
+</div>
+<div>
+    <h3>Check out how to use your new, eco friendly products</h3>
+    <a class="btn basic-button" href="{% url 'products' %}?category=how_to">How to use?</a>
+</div>
+</div>
+{% endblock %}

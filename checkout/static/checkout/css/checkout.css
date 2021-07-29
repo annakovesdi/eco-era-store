@@ -42,6 +42,20 @@ legend {
     text-align: right;
 }
 
+.stripe-payment{
+    margin-bottom: 40px;
+}
+
+.stripe-style-input {
+    margin-bottom: 0;
+}
+
+.error-message,
+.error-icon {
+    color: #b0736b;
+    font-size: 14px;
+}
+
 @media (min-width: 768px) {
     #order-summary {
         order: 2;
