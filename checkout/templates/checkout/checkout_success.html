@@ -13,8 +13,8 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-6" id="order-summary">
-        <h3>Order Summary: <strong>{{ product_count }}</strong> items in shoppingbag</h3>
-        {% for item in bag_items %}
+        <h3><strong>Your new items</strong> getting ready for delivery</h3>
+        {% for item in order.lineitems.all %}
         <div class="row">
             <div class="col-4">
                 <a href="{% url 'product_detail' item.product.id %}">
@@ -23,7 +23,7 @@
             </div>
             <div class="col-4 product-name">
                 <h4>{{ item.product.name }}</h4>
-                <p>Qantity: {{ item.quantity }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
             </div>
             <div class="col-4 price">
                 <p>${{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -33,12 +33,19 @@
         <hr>
         <div class="row order-total">
         <div class="col">
-            <p>Order Total: {{ total | floatformat:2 }}</p>
-            <p>Delivery: {{ delivery | floatformat:2 }}</p>
-            <p><strong>Grand Total: {{ grand_total | floatformat:2 }}</strong></p>
+            <p>Order Total: {{ order.order_total }}</p>
+            <p>Delivery: {{ order.delivery_cost }}</p>
+            <p><strong>You have been charged: {{ order.grand_total }}</strong></p>
             <hr>
         </div>
         </div>
+        <p>Delivery address:</p> 
+        {{ order.full_name }}
+        {{ order.street_addres }}{{ order.house_number }}{% if order.additive %}
+                                                            {{order.additive}}
+                                                        {% endif %} 
+        {{ order.postcode }} {{ order.city }}
+        {{ order.country }}
     </div>
 </div>
 <div>
