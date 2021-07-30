@@ -6,3 +6,6 @@ darkblue: #829CB0
 -how to use category description in template
 -customise error messages
 -bug stripe - form did not submit with anchor tag, only with button.
+-bug update shopping bag - when clicking on the first does not update amount.second yes
+-checkout form: error message does not disappear after error is fixed
+-add countryselect dropdown 

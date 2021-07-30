@@ -27,7 +27,7 @@
                 <p>Qantity: {{ item.quantity }}</p>
             </div>
             <div class="col-4 price">
-                <p>${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
             </div>
         </div>
         {% endfor %}
@@ -92,7 +92,7 @@
                     </div>
                     <br class="margin-bottom">
                     <div class="row center">
-                        <p>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></p>
+                        <p>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></p>
                     </div>
                 </form>
                 <hr>

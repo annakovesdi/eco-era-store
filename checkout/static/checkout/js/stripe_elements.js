@@ -42,25 +42,61 @@ form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
-    stripe.confirmCardPayment(clientSecret, {
+
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        'save_info': saveInfo,
+    };
+    var url = '/checkout/cache_checkout_data/';
+
+    $.post(url, postData).done(function() {
+        stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
-        }
-    }).then(function(result) {
-        console.log("Card returned!");
-        if (result.error) {
-            var errorDiv = document.getElementById('card-errors');
-            var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${result.error.message}</h5>`
-            $(errorDiv).html(html);
-            card.update({ 'disabled': false});
-            $('#submit-button').attr('disabled', false);
-            console.log("Card error");
-        } else {
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
-                console.log("Card submit");
-
+            billing_details: {
+                name:$.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
+                email: $.trim(form.email.value),
+                address: {
+                    line1: $.trim(form.street_address.value),
+                    line2: $.trim(form.house_number.value),
+                    city: $.trim(form.city.value),
+                    country: $.trim(form.country.value),
+                }
+            }
+        },
+        shipping: {
+                name:$.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
+                address: {
+                    line1: $.trim(form.street_address.value),
+                    line2: $.trim(form.house_number.value),
+                    city: $.trim(form.city.value),
+                    postal_code: $.trim(form.postcode.value),
+                    country: $.trim(form.country.value),
+                }
+            },
+        }).then(function(result) {
+            console.log("Card returned!");
+            if (result.error) {
+                var errorDiv = document.getElementById('card-errors');
+                var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${result.error.message}</h5>`
+                $(errorDiv).html(html);
+                card.update({ 'disabled': false});
+                $('#submit-button').attr('disabled', false);
+                console.log("Card error");
+            } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();
+                    console.log("Card submit");
+                };
             };
-        };
+        });
+    }).fail(function() {
+        //reload page, error message in django messages
+        location.reload();
     });
 });
