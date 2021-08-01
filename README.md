@@ -9,3 +9,4 @@ darkblue: #829CB0
 -bug update shopping bag - when clicking on the first does not update amount.second yes
 -checkout form: error message does not disappear after error is fixed
 -add countryselect dropdown 
+-email address in shipping info js and webhooks

@@ -73,25 +73,22 @@ form.addEventListener('submit', function(ev) {
                 phone: $.trim(form.phone_number.value),
                 address: {
                     line1: $.trim(form.street_address.value),
-                    line2: $.trim(form.house_number.value),
+                    line2: $.trim(form.house_number.value).concat(form.addition.value),
                     city: $.trim(form.city.value),
                     postal_code: $.trim(form.postcode.value),
                     country: $.trim(form.country.value),
                 }
             },
         }).then(function(result) {
-            console.log("Card returned!");
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${result.error.message}</h5>`
                 $(errorDiv).html(html);
                 card.update({ 'disabled': false});
                 $('#submit-button').attr('disabled', false);
-                console.log("Card error");
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     form.submit();
-                    console.log("Card submit");
                 };
             };
         });

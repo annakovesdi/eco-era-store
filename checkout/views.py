@@ -49,8 +49,11 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            print("Form is valid")
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            payment_id = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_payment_id = payment_id
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, quantity in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)

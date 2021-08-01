@@ -15,10 +15,26 @@
         <div class="col-12 col-md-6" id="order-summary">
         <h3><strong>Your new items</strong> getting ready for delivery</h3>
         {% for item in order.lineitems.all %}
+        <div class="container bag-background">
+        <div class="row">
+            <div class="col-6 col-md-2">
+                <h4 class="center">Item in bag</h4>
+            </div>
+            <div class="d-none d-md-block col-md-2">
+                <h4 class="center">Name</h4>
+            </div>
+            <div class="d-none d-md-block col-2">
+                <h4 class="center">Quantity</h4>
+            </div>
+            <div class="col-3 col-md-2">
+                <h4 class="center">Subtotal</h4>
+            </div>
+        </div>
+        <hr>
         <div class="row">
             <div class="col-4">
                 <a href="{% url 'product_detail' item.product.id %}">
-                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    <img src="{{ item.product.image.url }}" alt="{{ product.name }}">
                 </a>
             </div>
             <div class="col-4 product-name">
