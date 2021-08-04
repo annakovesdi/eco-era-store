@@ -1,0 +1,58 @@
+h1 {
+    color: black;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 40px;
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 85%;
+    margin: auto;
+}
+
+.div-navbar {
+    display:inline;
+}
+
+.ul-navbar {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    padding-top: 10px;
+    font-family: 'Abel', sans-serif;
+}
+
+.nav-link {
+    color: rgb(88, 127, 138);
+}
+
+a {
+    color: rgb(88, 127, 138);
+}
+
+a:hover, a:focus {
+    color: black;
+}
+
+p {
+    padding: 15px;
+    text-align: center;
+}
+
+form {
+    padding: 5%;
+    border: 1px solid rgb(88, 127, 138);
+}
+
+.form-group {
+    padding: 5px;
+}
+
+@media (max-width: 991px) {
+    .container {
+       max-width: 100%;
+    }
+ }
