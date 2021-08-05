@@ -113,6 +113,15 @@ input[type="checkbox"]:checked {
     padding: 5px;
 }
 
+form {
+    max-width: 85%;
+    margin: auto;
+}
+
+.form-group {
+    padding: 5px;
+}
+
 /*-------------------------Button*/
 /* Button by https://ianlunn.github.io/Hover/#effects, Border Transitions, Outline Out Button, MIT license*/
 
@@ -354,9 +363,6 @@ li::marker {
     margin-top: -80px;
 }
 
-.logo-text {
-
-}
 
 .banner {
     --bs-gutter-x: 0;
@@ -415,6 +421,22 @@ li::marker {
 
 .toast-message {
     margin-bottom: 5px;
+}
+
+.toast-success {
+    color: #649c71;
+}
+
+.toast-info {
+    color: #64819c;
+}
+
+.toast-error {
+    color: #b0736b;
+}
+
+.toast-warning {
+    color: #b58657;
 }
 
 /*------------------------Media Queries*/

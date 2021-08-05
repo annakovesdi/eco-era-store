@@ -7,5 +7,20 @@
 
 {% block content %}
 <h2 class="user">{{ profile }}</h2>
-<p>hello there i am a user</p>
+<div class="row">
+    <div class="col-12 col-lg-6">
+        <h3>Order History</h3>
+        {{ orders }}
+    </div>
+    <div class="col-12 col-lg-6">
+        <h3>Delivery Address</h3>
+        <form action="{% url 'user_profile' %}" method="POST" id="delivery-address-form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="buttons">
+                <button type="submit" id="submit-button" class="btn basic-button">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -1,11 +1,11 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
     <div class="toast-header">
-            <strong class="me-auto">Success</strong>
+            <strong class="me-auto toast-success">Success</strong>
             <button type="button" class="btn-close right" data-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="toast-body">
         <p class="toast-xs toast-message">{{message}}</p>
-    {% if grand_total %}
+    {% if grand_total and not on_profile_page %}
             <h4><strong>Your Bag ({{ product_count }})</strong></h4>
             <div>
                 {% for item in bag_items %}
@@ -22,7 +22,7 @@
             </div>
             <p class="right"> ${{ total|floatformat:2 }}</p>
             <div class="right">
-                 <a href="{% url 'view_bag' %}" class="btn basic-button">Go To Secure Checkout</a>
+                 <a href="{% url 'view_bag' %}" class="btn basic-button add-button">Go To Secure Checkout</a>
             </div>
         {% endif %}
 </div>
