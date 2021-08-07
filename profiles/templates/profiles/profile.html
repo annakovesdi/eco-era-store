@@ -24,6 +24,7 @@
                 <h4 class="center">Grand Total</h4>
             </div>
         </div>
+        <div class="container">
         <div class="row">
             {% for order in orders %}
             <div class="col-6 col-md-2">
@@ -41,6 +42,7 @@
                 <h4 class="center">{{ order.grand_total }}</h4>
             </div>
             {% endfor %}
+        </div>
         </div>
     </div>
     <div class="col-12 col-lg-6">
