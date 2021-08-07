@@ -65,8 +65,13 @@
     </div>
 </div>
 <div>
+    {% if from_profile %}
+        <h3>This is a past order. To view all your orders, go back to your profile</h3>
+         <a class="btn basic-button" href="{% url 'user_profile' %}">Back to profile</a>
+    {% else %}
     <h3>Check out how to use your new, eco friendly products</h3>
     <a class="btn basic-button" href="{% url 'products' %}?category=how_to">How to use?</a>
+    {% endif %}
 </div>
 </div>
 {% endblock %}

@@ -10,3 +10,4 @@ darkblue: #829CB0
 -checkout form: error message does not disappear after error is fixed
 -add countryselect dropdown 
 -email address in shipping info js and webhooks
+-finish default name and email address in profile 

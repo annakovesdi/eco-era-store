@@ -11,6 +11,8 @@ class UserProfileForm(forms.ModelForm):
 def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
     labels = {
+        'default_full_name': 'Full Name',
+        'default_email': 'Email',
         'default_phone_number': 'Phone Number',
         'default_street_address': 'Street Address',
         'default_house_number': 'House Number',
@@ -20,7 +22,7 @@ def __init__(self, *args, **kwargs):
         'default_country': 'Country'
     }
 
-    self.fields['default_phone_number'].widget.attrs['autofocus'] = True
+    self.fields['default_full_name'].widget.attrs['autofocus'] = True
     for field in self.fields:
         if self.fields[field].required:
             label = f'{labels[field]}*'

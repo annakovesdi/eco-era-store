@@ -5,6 +5,8 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
 from products.models import Product
 from shoppingbag.contexts import bag_contents
 
@@ -96,8 +98,26 @@ def checkout(request):
         if not stripe_public_key:
             messages.warning(request, 'Stripe public key is missing.'
                              'Did you forget to set it in your enviroment?')
+        
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                    'phone_number': profile.default_phone_number,
+                    'street_address': profile.default_street_address,
+                    'house_number': profile.default_house_number,
+                    'addition': profile.default_addition,
+                    'postcode': profile.default_postcode,
+                    'city': profile.default_city,
+                    'country': profile.default_country,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm
+        else:
+            order_form = OrderForm
 
-    order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -110,6 +130,26 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+
+        if save_info:
+            profile_data = {
+                'default_phone_number': order.phone_number,
+                'default_street_address': order.street_address,
+                'default_house_number': order.house_number,
+                'default_addition': order.addition,
+                'default_postcode': order.postcode,
+                'default_city': order.city,
+                'default_country': order.country,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid:
+                user_profile_form.save()
+
     messages.success(
         request, f'Thank you for your order. Your order '
         'has been succesfully processed')
