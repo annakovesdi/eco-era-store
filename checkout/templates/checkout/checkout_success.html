@@ -7,71 +7,122 @@
 {% endblock %}
 
 {% block content %}
-<h2>Thank you for your order</h2>
-<h3>Your order number is {{ order.order_number }}. A confirmation email will be sent to {{ order.email }}</h3>
 
 <div class="container">
+    <h2>Thank you for your order</h2>
+    <h3 class="margin-bottom-l">Your order number is {{ order.order_number }}. A confirmation email will be sent to {{ order.email }}</h3>
     <div class="row">
-        <div class="col-12 col-md-6" id="order-summary">
+        <div class="col-12 col-lg-7">
         <h3><strong>Your new items</strong> getting ready for delivery</h3>
-        {% for item in order.lineitems.all %}
-        <div class="container bag-background">
+        <br class="margin-bottom">
+        <div class="bag-background">
         <div class="row">
-            <div class="col-6 col-md-2">
-                <h4 class="center">Item in bag</h4>
+            <div class="col">
+                <h4 class="left">Item in bag</h4>
             </div>
-            <div class="d-none d-md-block col-md-2">
-                <h4 class="center">Name</h4>
+            <div class="d-none d-md-block col">
+                <h4 class="left">Name</h4>
             </div>
-            <div class="d-none d-md-block col-2">
-                <h4 class="center">Quantity</h4>
+            <div class="d-none d-md-block col">
+                <h4 class="left">Quantity</h4>
             </div>
-            <div class="col-3 col-md-2">
-                <h4 class="center">Subtotal</h4>
+            <div class="col">
+                <h4 class="right">Subtotal</h4>
             </div>
         </div>
         <hr>
+        {% for item in order.lineitems.all %}
         <div class="row">
-            <div class="col-4">
+            <div class="col image d-none d-md-block">
                 <a href="{% url 'product_detail' item.product.id %}">
-                    <img src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    <img class="image-s" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                 </a>
             </div>
-            <div class="col-4 product-name">
+            <div class="col product-name">
                 <h4>{{ item.product.name }}</h4>
+            </div>
+            <div class="col auto d-none d-md-block">
                 <p>Quantity: {{ item.quantity }}</p>
             </div>
-            <div class="col-4 price">
-                <p>${{ item.product.price | calc_subtotal:item.quantity }}</p>
+            <div class="col price">
+                <p class="right">${{ item.product.price | calc_subtotal:item.quantity }}</p>
             </div>
         </div>
         {% endfor %}
         <hr>
+        </div>
         <div class="row order-total">
         <div class="col">
-            <p>Order Total: {{ order.order_total }}</p>
-            <p>Delivery: {{ order.delivery_cost }}</p>
-            <p><strong>You have been charged: {{ order.grand_total }}</strong></p>
+            <div class="col">
+                <p class="right">Order Total: {{ order.order_total }}</p>
+            </div>
+            <div class="col">
+                <p class="right">Delivery: {{ order.delivery_cost }}</p>
+            </div>
+            <div class="col">
+                <p class="right"><strong>You have been charged: {{ order.grand_total }}</strong></p>
+            </div>
             <hr>
         </div>
         </div>
-        <p>Delivery address:</p> 
-        {{ order.full_name }}
-        {{ order.street_addres }}{{ order.house_number }}{% if order.additive %}
-                                                            {{order.additive}}
-                                                        {% endif %} 
-        {{ order.postcode }} {{ order.city }}
-        {{ order.country }}
+        </div>
+        <div class="col-12 col-lg-5">
+            <h3>Delivery Address</h3>
+        <div class="delivery-address">
+            <div class="row">
+                <div class="col-4 offset-md-2 offset-lg-1">
+                    <p>Name:</p>
+                </div>
+                <div class="col-8 col-md-4 col-lg-7">
+                    <h4 class="right">{{ order.full_name }}</h4>
+                </div>
+            </div>
+         <br>
+         <div class="row">
+                <div class="col-4 offset-md-2 offset-lg-1">
+                    <p>Address:</p>
+                </div>
+                <div class="col-8 col-md-4 col-lg-7">
+                   <h4 class="right">{{ order.street_address }} {{ order.house_number }} {% if order.additive %}
+                                                            {{order.additive}} 
+                                                        {% endif %} </h4>
+                </div>
+            </div>
+            <br>
+             <div class="row">
+                <div class="col-4 offset-md-2 offset-lg-1">
+                    <p>Postcode & city:</p>
+                </div>
+                <div class="col-8 col-md-4 col-lg-7">
+                    <h4 class="right">{{ order.postcode }} {{ order.city }}</h4>
+                </div>
+            </div>
+         <br>
+         <div class="row">
+                <div class="col-4 offset-md-2 offset-lg-1">
+                    <p>Country:</p>
+                </div>
+                <div class="col-8 col-md-4 col-lg-7">
+                    <h4 class="right">{{ order.country }}</h4>
+                </div>
+            </div>
+         <br>
+        </div>
     </div>
 </div>
+<br class="margin-bottom-l">
 <div>
     {% if from_profile %}
-        <h3>This is a past order. To view all your orders, go back to your profile</h3>
-         <a class="btn basic-button" href="{% url 'user_profile' %}">Back to profile</a>
+        <div class="center">
+            <h3>This is a past order. To view all your orders, go back to your profile</h3>
+            <a class="btn basic-button" href="{% url 'user_profile' %}">Back to profile</a>
+        </div> 
     {% else %}
-    <h3>Check out how to use your new, eco friendly products</h3>
-    <a class="btn basic-button" href="{% url 'products' %}?category=how_to">How to use?</a>
+        <div class="center">
+            <h3>Check out how to use your new, eco friendly products</h3>
+            <a class="btn basic-button" href="{% url 'products' %}?category=how_to">How to use?</a>
+        </div>
     {% endif %}
-</div>
+    </div>
 </div>
 {% endblock %}

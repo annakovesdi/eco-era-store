@@ -19,24 +19,24 @@
         <div class="row">
             <div class="col-4">
                 <a href="{% url 'product_detail' item.product.id %}">
-                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    <img class="image-s" src="{{ item.product.image.url }}" alt="{{ product.name }}">
                 </a>
             </div>
             <div class="col-4 product-name">
                 <h4>{{ item.product.name }}</h4>
-                <p>Qantity: {{ item.quantity }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
             </div>
             <div class="col-4 price">
-                <p>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                <p class="right">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
             </div>
         </div>
         {% endfor %}
         <hr>
         <div class="row order-total">
         <div class="col">
-            <p>Order Total: {{ total | floatformat:2 }}</p>
-            <p>Delivery: {{ delivery | floatformat:2 }}</p>
-            <p><strong>Grand Total: {{ grand_total | floatformat:2 }}</strong></p>
+            <p class="right">Order Total: {{ total | floatformat:2 }}</p>
+            <p class="right">Delivery: {{ delivery | floatformat:2 }}</p>
+            <p class="right"><strong>Grand Total: {{ grand_total | floatformat:2 }}</strong></p>
             <hr>
         </div>
         </div>

@@ -6,6 +6,7 @@
     <div class="toast-body">
         <p class="toast-xs toast-message">{{message}}</p>
     {% if grand_total and not on_profile_page %}
+    <br class="padding-5">
             <h4><strong>Your Bag ({{ product_count }})</strong></h4>
             <div>
                 {% for item in bag_items %}
@@ -13,7 +14,7 @@
                         <div class="col-4">
                             <img class="toast-image center" src="{{ item.product.image.url }}">
                         </div>
-                        <div class="col">
+                        <div class="col auto">
                             <h5>{{ item.product.name }}</h5>
                             <p class="toast-xs">Quantity: {{ item.quantity }}</p>
                         </div>

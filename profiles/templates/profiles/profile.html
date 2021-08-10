@@ -8,38 +8,39 @@
 {% block content %}
 <h2 class="user">{{ profile }}</h2>
 <div class="row">
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-6 margin-bottom-l">
         <h3>Order History</h3>
+        <hr class="margin-bottom-l">
+        <div class="container order-history">
          <div class="row">
-            <div class="col-6 col-md-2">
-                <h4 class="center">Order Number</h4>
+            <div class="col">
+                <p>Number</p>
             </div>
-            <div class="d-none d-md-block col-md-2">
-                <h4 class="center">Date</h4>
+            <div class="d-none d-md-block col">
+                <p>Date</p>
             </div>
-            <div class="d-none d-md-block col-2">
-                <h4 class="center">Quantity</h4>
+            <div class="d-none d-md-block col">
+                <p class="right">Quantity</p>
             </div>
-            <div class="col-3 col-md-2">
-                <h4 class="center">Grand Total</h4>
+            <div class="col">
+                <p class="right">Grand Total</p>
             </div>
         </div>
-        <div class="container">
         <div class="row">
             {% for order in orders %}
-            <div class="col-6 col-md-2">
-                <p><strong><a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
+            <div class="col">
+                <p><strong><a class="blue" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
                     {{ order.order_number|truncatechars:7}}
                 </a></strong></p>
             </div>
-            <div class="d-none d-md-block col-md-2">
-                <h4 class="center">{{ order.date }}</h4>
+            <div class="d-none d-md-block col">
+                <p>{{ order.date }}</p>
             </div>
-            <div class="d-none d-md-block col-2">
-                <h4 class="center">{{ order.lineitems|length }}</h4>
+            <div class="d-none d-md-block col">
+                <p class="right">3</p>
             </div>
-            <div class="col-3 col-md-2">
-                <h4 class="center">{{ order.grand_total }}</h4>
+            <div class="col">
+                <p class="right">{{ order.grand_total }}</p>
             </div>
             {% endfor %}
         </div>
@@ -47,6 +48,7 @@
     </div>
     <div class="col-12 col-lg-6">
         <h3>Delivery Address</h3>
+        <hr class="margin-bottom-l">
         <form action="{% url 'user_profile' %}" method="POST" id="delivery-address-form">
             {% csrf_token %}
             {{ form|crispy }}
