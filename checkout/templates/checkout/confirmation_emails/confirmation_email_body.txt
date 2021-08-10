@@ -1,0 +1,13 @@
+Dear {{ order.full_name }},
+
+Thanks for choosing Eco Era! 
+
+This email is a confirmation of order {{ order.order_number }} on {{ order.date }}.
+
+We will send you your items as soon as possible. This means, if they are in stock and the order was done on a working day before 15.00: the same day.
+Otherwise we will let you know when your order is ready and the exact date of shipping. 
+Remember that all our products are handmade with love, so if the items are not in stock we will make them specially for you.
+
+Your order details are below: 
+
+
