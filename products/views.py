@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
-
-# Create your views here.
+from .forms import ProductForm
 
 
 def all_products(request):
@@ -27,3 +26,13 @@ def product_detail(request, product_id):
         'product': product,
     }
     return render(request, "products/product_detail.html", context)
+
+
+# add item to the store
+def add_item(request):
+    form = ProductForm
+    template = 'products/add_item.html'
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)

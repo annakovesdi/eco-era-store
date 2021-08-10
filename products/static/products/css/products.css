@@ -52,15 +52,22 @@
     border: 1px solid #dedcd3;
 }
 
-
+#add-item {
+    width: 60%;
+}
 
 .description:first-line{
     font-weight: 500;
 }
 
+/*----------------------Media Queries*/
+
 @media (max-width: 991px) {
     .description {
         border: none;
         padding: 0px;
+    }
+    #add-item {
+        width: 80%;
     }
 }

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>Product Management - Add Item</h2>
+
+
+<div class="container">
+    <div class="row">
+        <h3>Please fill out the form below to add an item</h3>
+        <form action="{% url 'add_item' %}" method="POST" enctype="multipart/form-data" id="add-item">
+            {% csrf_token %}
+            <div class="margin-bottom">
+                {{ form | crispy }}
+            </div>
+            <div class="row center margin-bottom-l">
+                <div class="col"> 
+                    <a href="{% url 'products' %}" class="btn basic-button">Cancel</a>
+                </div>  
+                <div class="col">             
+                    <button type="submit" id="submit-button" class="btn basic-button add-button">Add Item</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
