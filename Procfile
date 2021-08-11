@@ -1,1 +1,1 @@
-web: gunicorn eco-era-store.wsgi:application
+web: gunicorn eco_era_store.wsgi:application
