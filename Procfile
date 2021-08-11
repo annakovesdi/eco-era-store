@@ -1,0 +1,1 @@
+web: gunicorn eco-era-store.wsgi:application
