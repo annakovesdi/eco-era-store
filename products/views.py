@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import Product, Category
 from .forms import ProductForm
@@ -31,7 +32,11 @@ def product_detail(request, product_id):
 
 
 # add item to the store
+@login_required
 def add_item(request):
+    if not request.user.is_superuser:
+        messages.error('Only an Admin can access this page')
+        return redirect(reverse('home'))
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -51,7 +56,11 @@ def add_item(request):
 
 
 # edit an item
+@login_required
 def edit_item(request, product_id):
+    if not request.user.is_superuser:
+        messages.error('Only an Admin can access this page')
+        return redirect(reverse('home'))
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -75,7 +84,11 @@ def edit_item(request, product_id):
 
 
 # delete item
+@login_required
 def delete_item(request, product_id):
+    if not request.user.is_superuser:
+        messages.error('Only an Admin can access this page')
+        return redirect(reverse('home'))
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Succesfully deleted item')
