@@ -27,7 +27,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {% if request.user.is_authenticated %}
                                     {% if request.user.is_superuser %}
-                                    <li><a class="dropdown-item" href="#">Product Management</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'product_management' %}">Product Management</a></li>
                                     {% endif %}
                                     <li><a class="dropdown-item" href="{% url 'user_profile' %}">My Profile</a></li>
                                     <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>

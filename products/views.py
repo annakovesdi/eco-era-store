@@ -31,6 +31,15 @@ def product_detail(request, product_id):
     return render(request, "products/product_detail.html", context)
 
 
+@login_required
+def product_management(request):
+    products = Product.objects.all()
+    context = {
+        'products': products,
+    }
+    return render(request, "products/product_management.html", context)
+
+
 # add item to the store
 @login_required
 def add_item(request):
@@ -42,7 +51,7 @@ def add_item(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Succesfully added item')
-            return redirect(reverse('add_item'))
+            return redirect(reverse('product_management'))
         else:
             messages.error(request, 'Failed to add item. Please check your input.')
     else: 
@@ -92,4 +101,4 @@ def delete_item(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Succesfully deleted item')
-    return redirect(reverse('products'))
+    return redirect(reverse('product_management'))
