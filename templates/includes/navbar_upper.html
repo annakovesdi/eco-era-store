@@ -3,10 +3,10 @@
                 <div class="container-fluid">  
                     <!--Logo-->
                     <div class="col-xs col-md-2 logo">
-                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="../../media/logo-t.png" alt="Logo"></a>
+                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="{{ MEDIA_URL }}logo-t.png" alt="Logo"></a>
                     </div>
                     <div class="d-none d-md-block col-md-5 col-lg-7">
-                        <a href="{% url 'home' %}"><img class="background-text" src="../../media/img/black.png" alt="Eco Era Store"></a>
+                        <a href="{% url 'home' %}"><img class="background-text" src="{{ MEDIA_URL }}black.png" alt="Eco Era Store"></a>
                     </div>
                     <!--Toggler Button-->
                     <div class="col-xs d-lg-none nav-item">

@@ -7,10 +7,10 @@
                 <div class="container-fluid">  
                     <!--Logo-->
                     <div class="col-xs d-md-none logo">
-                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="../media/img/logo-t.png" alt="Logo"></a>
+                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="{{ MEDIA_URL }}logo-t.png" alt="Logo"></a>
                     </div>
                     <div class="d-none d-md-block col-md-7 col-lg-10 logo-text">
-                        <a href="{% url 'home' %}"><img class="background-text" src="../media/img/black.png" alt="Eco Era Store"></a>
+                        <a href="{% url 'home' %}"><img class="background-text" src="{{ MEDIA_URL }}black.png" alt="Eco Era Store"></a>
                     </div>
                     <!--Toggler Button-->
                     <div class="col-xs d-lg-none nav-item">
@@ -73,12 +73,12 @@
         <div>
     <div class="logo-big row">
         <a class="d-none d-md-block navbar-brand" href="{% url 'home' %}"><img class="logo-big-image"
-                    src="{{ MEDIA_URL }}logo-t.jpeg" alt="Logo"></a>
+                    src="{{ MEDIA_URL }}logo-t.png" alt="Logo"></a>
     </div>
 </div>
         <div class="title row">
             <div class="col-12">
-                <img class="title-image" src="../media/img/matters.png" alt="An era that matters">
+                <img class="title-image" src="{{ MEDIA_URL }}matters.png" alt="An era that matters">
             </div>
         </div>
         <hr class="hero-hr">
