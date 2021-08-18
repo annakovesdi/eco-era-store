@@ -70,19 +70,19 @@
             <h3>Delivery Address</h3>
         <div class="delivery-address">
             <div class="row">
-                <div class="col-4 offset-md-2 offset-lg-1">
+                <div class="col-4 offset-md-1">
                     <p>Name:</p>
                 </div>
-                <div class="col-8 col-md-4 col-lg-7">
+                <div class="col-8 col-md-6 col-lg-7">
                     <h4 class="right">{{ order.full_name }}</h4>
                 </div>
             </div>
          <br>
          <div class="row">
-                <div class="col-4 offset-md-2 offset-lg-1">
+                <div class="col-4 offset-md-1">
                     <p>Address:</p>
                 </div>
-                <div class="col-8 col-md-4 col-lg-7">
+                <div class="col-8 col-md-6 col-lg-7">
                    <h4 class="right">{{ order.street_address }} {{ order.house_number }} {% if order.additive %}
                                                             {{order.additive}} 
                                                         {% endif %} </h4>
@@ -90,19 +90,19 @@
             </div>
             <br>
              <div class="row">
-                <div class="col-4 offset-md-2 offset-lg-1">
+                <div class="col-4 offset-md-1">
                     <p>Postcode & city:</p>
                 </div>
-                <div class="col-8 col-md-4 col-lg-7">
+                <div class="col-8 col-md-6 col-lg-7">
                     <h4 class="right">{{ order.postcode }} {{ order.city }}</h4>
                 </div>
             </div>
          <br>
          <div class="row">
-                <div class="col-4 offset-md-2 offset-lg-1">
+                <div class="col-4 offset-md-1">
                     <p>Country:</p>
                 </div>
-                <div class="col-8 col-md-4 col-lg-7">
+                <div class="col-8 col-md-6 col-lg-7">
                     <h4 class="right">{{ order.country }}</h4>
                 </div>
             </div>

@@ -25,7 +25,7 @@
                 <hr>
                 <div>
                     <br>
-                    <p class="left"><strong>{{ product.detail }}</strong></p>
+                    <p class="left"><strong>{{ product.detail|linebreaksbr }}</strong></p>
                 </div>
                 <br>
                 <div>
@@ -52,8 +52,8 @@
         </div>
         <hr class="d-lg-none">
         <div class="description">
-            <h4 class="center">Description</h4>
-            <p>{{ product.description }}</p>
+            <h4 class="center margin-bottom-l">Description</h4>
+            <p>{{ product.description|linebreaksbr }}</p>
         </div>
         <div class="keep-shopping">
             <a href="{% url 'products' %}" class="btn basic-button">Keep Shopping</a>
