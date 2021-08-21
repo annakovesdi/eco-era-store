@@ -13,10 +13,15 @@
         </div>
     </div>
 </section>
-{% if category %}
-      <h2>{{ category.fiendly_name }}</h2>
-      <p>{{ product.category.description }}</p>
-{% endif %}
+{% for c in category %}
+<div class="container">
+    <h2>{{ c.friendly_name }}</h2>
+    {% if c.description != None %}
+        <p class="margin-bottom-l"><strong>{{ c.description|linebreaksbr }}</strong></p>
+    {% endif %}
+</div>
+      
+{% endfor %}
 <section>
   
     <div class="container-fluid">

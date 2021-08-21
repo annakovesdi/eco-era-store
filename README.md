@@ -13,3 +13,8 @@ x-add countryselect dropdown
 -finish default name and email address in profile 
 -toast succesfully added product click on picture takes you to product
 -products too small on lg
+
+
+
+
+https://stackoverflow.com/questions/14678845/keep-format-text-in-textfield-using-readonly-fields-in-admin/21869578 answer jenniwren for linebreak

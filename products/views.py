@@ -8,17 +8,18 @@ from .forms import ProductForm
 
 def all_products(request):
     products = Product.objects.all()
-    categories = None
+    category = None
 
     if request.GET:
         if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            print(request.GET['category'])
+            category = request.GET['category'].split(',')
+            products = products.filter(category__name__in=category)
+            category = Category.objects.filter(name__in=category)
 
     context = {
         'products': products,
-        'current_categories': categories,
+        'category': category,
     }
     return render(request, "products/products.html", context)
 
