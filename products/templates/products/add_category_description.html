@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/css/products.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>Product Management - Add Category Description</h2>
+
+
+<div class="container">
+    <div class="row">
+        <h3>Please fill out the form below to add/edit category descriptions</h3>
+        <form action="{% url 'add_category_description' category.id %}" method="POST" enctype="multipart/form-data" id="add_category_description">
+            {% csrf_token %}
+            <div class="margin-bottom">
+                <h4 class="center">{{ category.friendly_name }}</h4>
+                {{ form | crispy }}
+            </div>
+            <div class="row center margin-bottom-l"> 
+                <div class="col">             
+                    <button type="submit" id="submit-button" class="btn basic-button add-button">Add/Edit category description</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

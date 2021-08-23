@@ -12,11 +12,25 @@
 
 <section>
     <div class="container-fluid">
-    <div class="center margin-bottom-l">
-        <h3>Add new item</h3>
-        <a href="{% url 'add_item' %}" class="btn basic-button">Add Item</a>
+    <div class="row margin-bottom-l">
+        <div class="col-12 col-md-6 center">
+            <h3>Add/Edit category description</h3>
+            <div class="dropdown">
+                <button class="btn basic-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for category in categories %}
+                    <a class="dropdown-item" href="{% url 'add_category_description' category.id %}">{{ category.friendly_name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 center">
+            <h3>Add new item</h3>
+            <a href="{% url 'add_item' %}" class="btn basic-button">Add Item</a>
+        </div>
     </div>
-        
         <h3>Edit/Delete existing items</h3>
         <div class="row">
             {% for product in products %}
@@ -41,3 +55,4 @@
     </div>
 </section>
 {% endblock %}
+
