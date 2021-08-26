@@ -128,6 +128,10 @@ a.blue:hover {
     margin-bottom: 40px;
 }
 
+.margin-bottom-xl {
+    margin-bottom: 80px;
+}
+
 .padding-5 {
     padding: 5px;
 }
@@ -147,6 +151,17 @@ form {
     object-fit: cover;
     overflow: hidden;
     margin: 3px;
+}
+
+/* How to get the footer in the right place https://www.freecodecamp.org/news/how-to-keep-your-footer-where-it-belongs-59c6aa05c59c/ */
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 4rem;
 }
 
 /*-------------------------Button*/
@@ -314,10 +329,26 @@ li::marker {
 
 .icon {
     font-size: 23px;
-        line-height: 1;
+    line-height: 1;
 }
 
+/*------------------------Footer*/
 
+.social-icons {
+    margin: auto;
+}
+
+.copyright-text {
+    margin: auto;
+}
+
+.footer {
+    background-color: #d8dee3;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4rem;
+}
 
 /*------------------------Index*/
 
@@ -406,6 +437,10 @@ li::marker {
     padding: 5px;
 }
 
+.fixed-bottom{
+    background-color: #d8dee3;
+}
+
 /*------------------------Shopping Bag*/
 
 .margin-auto {
@@ -492,6 +527,12 @@ li::marker {
     }
     .title {
         padding-top: 20%;
+    }
+    .hero {
+        height: 30vh;
+    }
+    .overlay {
+        height: 100vw;
     }
  }
 

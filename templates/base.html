@@ -39,15 +39,29 @@
             {% endwith %}
         {% endfor %}
     </div>
-    {% endif %}
+{% endif %}
+<div id="page-container">
+    <div id="content-wrap">
+        {% block allauth%}
+        {% endblock %}
 
-    {% block allauth%}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-    
+        {% block content %}
+        {% endblock %} 
+    </div>
     <footer>
+        {% block footer %}
+        <div class="footer">
+            <section class="d-flex flex-wrap justify-content-between py-3 border-top">
+                <div class="col-md-4 d-flex copyright-text">
+                <span class="text-muted center t-2">© 2021 Eco Era Store</span>
+                </div>
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex social-icons">
+                <li class="ms-3"><a href="https://www.facebook.com/Eco-Era-115008750196443" target="_blank"><i class="fab fa-facebook-square text-muted"></i></a></li>
+                <li class="ms-3"><a href="https://www.instagram.com/eco_era_store/" target="_blank"><i class="fab fa-instagram text-muted"></i></a></li>
+                </ul>
+            </section>
+        </div>
+        {% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -61,6 +75,6 @@
         {% block js %}
         {% endblock %}
     </footer>
-    
+</div>
 </body>
 </html>

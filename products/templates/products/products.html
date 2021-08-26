@@ -33,7 +33,7 @@
                             <img class="card-img-top card-img" src="{{ product.image.url }}"  alt="Image of {{ product.name }}">
                         </a>
                         <div class="card-body">
-                            <h3 class="card-title">{{ product.category.friendly_name }} - {{ product.name }}</h3>
+                            <h3 class="card-title">{{ product.name }}</h3>
                             <hr class="d-none d-md-block">
                             <p class="card-text center padding-5">€{{ product.price }}</p>
                             <div class="d-none d-md-block center padding-5">
@@ -46,5 +46,6 @@
             {% endfor %}
         </div>
     </div>
+ 
 </section>
 {% endblock %}

@@ -1,7 +1,8 @@
 
 <script>  
         $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');
+        var form = $.prev('.update-form');
+        console.log(form)
         form.submit();
     })
 
