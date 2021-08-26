@@ -28,6 +28,11 @@
                     <p class="left"><strong>{{ product.detail|linebreaksbr }}</strong></p>
                 </div>
                 <br>
+                {% if product.soldout %}
+                <div class="center">
+                    <button class="btn basic-button" disabled>Sold Out</button>
+                </div>   
+                {% else %}
                 <div>
                     <form action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
@@ -47,6 +52,7 @@
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form>
+                    {% endif %}
                 </div>
             </div>
         </div>

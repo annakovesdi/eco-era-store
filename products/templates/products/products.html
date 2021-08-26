@@ -37,8 +37,12 @@
                             <hr class="d-none d-md-block">
                             <p class="card-text center padding-5">€{{ product.price }}</p>
                             <div class="d-none d-md-block center padding-5">
-                               <a href="{% url 'add_to_bag' product.id %}" class="btn basic-button add-button">Add to bag</a>
+                                {% if product.soldout %}
+                                <button class="btn basic-button" disabled>Sold Out</button>
+                                {% else %}
+                                <a href="{% url 'add_to_bag' product.id %}" class="btn basic-button add-button">Add to bag</a>
                                 <a href="{% url 'product_detail' product.id %}" class="btn basic-button">See more</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -46,6 +50,5 @@
             {% endfor %}
         </div>
     </div>
- 
 </section>
 {% endblock %}

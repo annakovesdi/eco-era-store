@@ -60,6 +60,14 @@
     font-weight: 500;
 }
 
+.form-check .form-check-input {
+    float: inherit;
+}
+
+.form-check-input[type=checkbox] {
+    border-radius: 0;
+}
+
 /*----------------------Media Queries*/
 
 @media (max-width: 991px) {

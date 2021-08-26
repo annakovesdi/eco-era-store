@@ -12,7 +12,6 @@ def all_products(request):
 
     if request.GET:
         if 'category' in request.GET:
-            print(request.GET['category'])
             category = request.GET['category'].split(',')
             products = products.filter(category__name__in=category)
             category = Category.objects.filter(name__in=category)
@@ -53,11 +52,13 @@ def add_category_description(request, id):
         form = CategoryForm(request.POST, request.FILES, instance=category)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Succesfully edited category description')
+            messages.success(
+                request, 'Succesfully edited category description')
             return redirect(reverse('product_management'))
         else:
-            messages.error(request, 'Failed to add category description. Please check your input.')
-    else: 
+            messages.error(request, 'Failed to add category description.'
+                                    'Please check your input.')
+    else:
         form = CategoryForm(instance=category)
         messages.info(request, f'You are editing {category.name}')
 
@@ -106,7 +107,8 @@ def edit_item(request, product_id):
             messages.success(request, 'Successfully edited item')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to edit item. Please check your input.')
+            messages.error(
+                request, 'Failed to edit item. Please check your input.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -124,7 +126,7 @@ def edit_item(request, product_id):
 @login_required
 def delete_item(request, product_id):
     if not request.user.is_superuser:
-        messages.error('Only an Admin can access this page')
+        messages.error(request, 'Only an Admin can access this page')
         return redirect(reverse('home'))
     product = get_object_or_404(Product, pk=product_id)
     product.delete()

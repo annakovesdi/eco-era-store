@@ -29,7 +29,12 @@ class Product(models.Model):
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=False, blank=False, default='logo-t.png')
+    image2 = models.ImageField(null=True, blank=True)
+    image3 = models.ImageField(null=True, blank=True)
+    image4 = models.ImageField(null=True, blank=True)
+    image5 = models.ImageField(null=True, blank=True)
+    soldout = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
