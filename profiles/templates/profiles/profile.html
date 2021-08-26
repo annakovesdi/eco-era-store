@@ -26,8 +26,8 @@
                 <p class="right">Grand Total</p>
             </div>
         </div>
+        {% for order in orders %}
         <div class="row">
-            {% for order in orders %}
             <div class="col">
                 <p><strong><a class="blue" href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
                     {{ order.order_number|truncatechars:7}}
@@ -42,8 +42,8 @@
             <div class="col">
                 <p class="right">{{ order.grand_total }}</p>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
         </div>
     </div>
     <div class="col-12 col-lg-6">

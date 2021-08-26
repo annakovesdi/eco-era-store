@@ -6,24 +6,26 @@ x-how to use enters and spaces in description product
 x-how to use category description in template
 x-customise error messages
 x-bug stripe - form did not submit with anchor tag, only with button.
--bug update shopping bag - when clicking on the first does not update amount.second yes
--checkout form: error message does not disappear after error is fixed
+    -bug update shopping bag - when clicking on the first does not update amount.second yes
+x-checkout form: error message does not disappear after error is fixed
 x-add countryselect dropdown 
 -email address in shipping info js and webhooks
 -finish default name and email address in profile 
--toast succesfully added product click on picture takes you to product
--products too small on lg
+x-toast succesfully added product click on picture takes you to product
+x-products too small on lg
+-quantity on oder history form-how?
 
 -SOLD OUT tioggler button for product management
--giftcard form
+x-giftcard 
 -discount combi items
 -more images
 -images obligatory
 xreadme write it!
 xinstagram integration on home page
 -password change 
--footer
+xfooter
 
+real emails through django
 
 tutors: js submit prev link not working
 500 error stripe heroku
@@ -184,6 +186,8 @@ Documentation Bootstrap
 Tutors helping along the way. most times i solved the issues myself after being helped on the way by a tutor. Tutor help was contacted lot's of times throughout my project. 
 
 Eco Era Store 
-Text, Images and Concept all copyright of Eco Era Store Eveline Snoeij
+Text, Images and Concept all copyright of Eco Era Store 
+Promo video by Anna Kovesdi, intellectual property of Eco Era Store
+Eveline Snoeij
 KVK:77336542
 BTW nummer: NL003188712B85
