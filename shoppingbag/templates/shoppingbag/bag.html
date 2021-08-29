@@ -89,11 +89,13 @@
 <script> 
         //update bag
         $('.update-bag').click(function(e) {
-            $('form.update-form').submit();
+            let form = e.target.parentElement.previousElementSibling.previousElementSibling.firstElementChild;
+            form.submit()
         });
 
         //delete item from bag
      $('.remove-item').click(function(e) {
+        e.preventDefault()
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var url = `/shoppingbag/remove/${itemId}/`;

@@ -26,6 +26,8 @@ xinstagram integration on home page
 xfooter
 -footer crawls up when product sold out- container bigger then content 
 
+total items in profile view
+
 real emails through django
 
 tutors: js submit prev link not working
@@ -42,7 +44,7 @@ https://stackoverflow.com/questions/14678845/keep-format-text-in-textfield-using
 **Webshop for handmade ecological baby/mama products. The website allows you to get to know the products, the philosophy, the policy in a simple and no-nonsense easily viewable site. Checkout for bought items is handled by stripe, static files storage by AWS and deployment/postgres database through Heroku.**
 
 <h2>UX</h2>
-The ideal visitor is a parent and/or menstruating person, is interested in zero-waste and ecological solutions for common day to day hygiene routines regarding these subjects, wants to support small businesses, loves handmade goods and would likes to shop online.
+The ideal visitor is a parent and/or menstruating person, is interested in zero-waste and ecological solutions for common day to day hygiene routines regarding these subjects, wants to support small businesses, loves handmade goods and would like to shop online.
 
 Visitors are likely coming from Instagram, are interested to see prices and 'taste the atmosphere'. 
 
@@ -51,7 +53,9 @@ Visitors are likely coming from Instagram, are interested to see prices and 'tas
 *As a new visitor* 
 
 1. I want to easily find the product i am looking for
-2. I want to put products i like as fast as possible in my basket
+2. I want to put products i like as fast as possible in my bag
+3. I want to delete items from my bag
+3. I want to update the amount of products in my bag
 3. I want to have a clear menu to browse through the store
 4. I can find information about the products
 5. I can find how to use the products
