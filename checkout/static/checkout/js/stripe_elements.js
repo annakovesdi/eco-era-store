@@ -27,7 +27,7 @@ card.mount('#card-element');
 card.addEventListener('change', function (event) {
     var errorDiv = document.getElementById('card-errors');
     if (event.error) {
-        var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${event.error.message}</h5>`
+        var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${event.error.message}</h5>`;
         $(errorDiv).html(html);
     } else {
         errorDiv.textcontent = ``;
@@ -82,7 +82,7 @@ form.addEventListener('submit', function(ev) {
         }).then(function(result) {
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
-                var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${result.error.message}</h5>`
+                var html = `<h5 class="error-message"><i class="fas fa-times error-icon"></i>${result.error.message}</h5>`;
                 $(errorDiv).html(html);
                 card.update({ 'disabled': false});
                 $('#submit-button').attr('disabled', false);

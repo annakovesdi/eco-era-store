@@ -386,10 +386,6 @@ li::marker {
     transition: transform 1s;
 }
 
-.title:hover {
-    transform: black;
-}
-
 .title-image {
     max-width: 45%;
     min-width: 300px;

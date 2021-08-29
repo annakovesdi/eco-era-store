@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<!--ad banner-->
 <section>
     <div class="row banner">
         <div class="col">
@@ -13,40 +14,41 @@
         </div>
     </div>
 </section>
+<!--if in category menu, display category name as header-->
 {% for c in category %}
 <div class="container">
     <h2>{{ c.friendly_name }}</h2>
     {% if c.description != None %}
-        <p class="margin-bottom-l"><strong>{{ c.description|linebreaksbr }}</strong></p>
+    <p class="margin-bottom-l"><strong>{{ c.description|linebreaksbr }}</strong></p>
     {% endif %}
 </div>
-      
 {% endfor %}
+<!--Products-->
 <section>
-  
     <div class="container-fluid">
         <div class="row">
             {% for product in products %}
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
-                    <div class="card">
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top card-img" src="{{ product.image.url }}"  alt="Image of {{ product.name }}">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">{{ product.name }}</h3>
-                            <hr class="d-none d-md-block">
-                            <p class="card-text center padding-5">€{{ product.price }}</p>
-                            <div class="d-none d-md-block center padding-5">
-                                {% if product.soldout %}
-                                <button class="btn basic-button" disabled>Sold Out</button>
-                                {% else %}
-                                <a href="{% url 'add_to_bag' product.id %}" class="btn basic-button add-button">Add to bag</a>
-                                <a href="{% url 'product_detail' product.id %}" class="btn basic-button">See more</a>
-                                {% endif %}
-                            </div>
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 my-2">
+                <div class="card">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top card-img" src="{{ product.image.url }}" alt="Image of {{ product.name }}">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ product.name }}</h3>
+                        <hr class="d-none d-md-block">
+                        <p class="card-text center padding-5">€{{ product.price }}</p>
+                        <div class="d-none d-md-block center padding-5">
+                            {% if product.soldout %}
+                            <button class="btn basic-button" disabled>Sold Out</button>
+                            {% else %}
+                            <a href="{% url 'add_to_bag' product.id %}" class="btn basic-button add-button">Add to
+                                bag</a>
+                            <a href="{% url 'product_detail' product.id %}" class="btn basic-button">See more</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>

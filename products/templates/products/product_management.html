@@ -6,54 +6,54 @@
 {% endblock %}
 
 {% block content %}
-<section>
+<!--Product management page-->
     <h2>Product Management</h2>
-</section>
-
 <section>
     <div class="container-fluid">
-    <div class="row margin-bottom-l">
-        <div class="col-12 col-md-6 center">
-            <h3>Add/Edit category description</h3>
-            <div class="dropdown">
-                <button class="btn basic-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Select Category
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                {% for category in categories %}
-                    <a class="dropdown-item" href="{% url 'add_category_description' category.id %}">{{ category.friendly_name }}</a>
-                    {% endfor %}
+        <div class="row margin-bottom-l">
+            <div class="col-12 col-md-6 center">
+                <h3>Add/Edit category description</h3>
+                <div class="dropdown">
+                    <button class="btn basic-button dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Category
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {% for category in categories %}
+                        <a class="dropdown-item"
+                            href="{% url 'add_category_description' category.id %}">{{ category.friendly_name }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
+            <div class="col-12 col-md-6 center">
+                <h3>Add new item</h3>
+                <a href="{% url 'add_item' %}" class="btn basic-button">Add Item</a>
+            </div>
         </div>
-        <div class="col-12 col-md-6 center">
-            <h3>Add new item</h3>
-            <a href="{% url 'add_item' %}" class="btn basic-button">Add Item</a>
-        </div>
-    </div>
         <h3>Edit/Delete existing items</h3>
         <div class="row">
             {% for product in products %}
-                <div class="col-12 col-md-6 col-lg-3 my-2">
-                    <div class="card">
-                        <a href="{% url 'edit_item' product.id %}">
-                            <img class="card-img-top card-img" src="{{ product.image.url }}"  alt="Image of {{ product.name }}">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">{{ product.category.friendly_name }} - {{ product.name }}</h3>
-                            <hr class="d-none d-md-block">
-                            <p class="card-text center padding-5">€{{ product.price }}</p>
-                            <div class="d-none d-md-block center padding-5">
-                                <a href="{% url 'edit_item' product.id %}" class="btn basic-button">Edit Item</a>
-                                <a href="{% url 'delete_item' product.id %}" class="btn basic-button">Delete Item</a>
-                            </div>
+            <div class="col-12 col-md-6 col-lg-3 my-2">
+                <div class="card">
+                    <a href="{% url 'edit_item' product.id %}">
+                        <img class="card-img-top card-img" src="{{ product.image.url }}"
+                            alt="Image of {{ product.name }}">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ product.category.friendly_name }} - {{ product.name }}</h3>
+                        <hr class="d-none d-md-block">
+                        <p class="card-text center padding-5">€{{ product.price }}</p>
+                        <div class="d-none d-md-block center padding-5">
+                            <a href="{% url 'edit_item' product.id %}" class="btn basic-button">Edit Item</a>
+                            <a href="{% url 'delete_item' product.id %}" class="btn basic-button">Delete Item</a>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>
     <br class="margin-bottom-l">
 </section>
 {% endblock %}
-

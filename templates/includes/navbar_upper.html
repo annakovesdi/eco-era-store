@@ -1,55 +1,56 @@
 <!--Navigation bar upper row-->
-            <nav class="navbar navbar-expand-lg row">
-                <div class="container-fluid">  
-                    <!--Logo-->
-                    <div class="col-xs col-md-2 logo">
-                        <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="{{ MEDIA_URL }}logo-t.png" alt="Logo"></a>
-                    </div>
-                    <div class="d-none d-md-block col-md-5 col-lg-7">
-                        <a href="{% url 'home' %}"><img class="background-text" src="{{ MEDIA_URL }}black.png" alt="Eco Era Store"></a>
-                    </div>
-                    <!--Toggler Button-->
-                    <div class="col-xs d-lg-none nav-item">
-                    <a class="btn navbar-toggler icon-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars icon"></i><br>
-                            Menu
-                        </a>
+<nav class="navbar navbar-expand-lg row">
+    <div class="container-fluid">
+        <!--Logo-->
+        <div class="col-xs col-md-2 logo">
+            <a class="navbar-brand" href="{% url 'home' %}"><img class="logo-image" src="{{ MEDIA_URL }}logo-t.png"
+                    alt="Logo"></a>
+        </div>
+        <div class="d-none d-md-block col-md-5 col-lg-7">
+            <a href="{% url 'home' %}"><img class="background-text" src="{{ MEDIA_URL }}black.png"
+                    alt="Eco Era Store"></a>
+        </div>
+        <!--Toggler Button-->
+        <div class="col-xs d-lg-none nav-item">
+            <a class="btn navbar-toggler icon-button" data-toggle="collapse" href="#"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><i class="fas fa-bars icon"></i><br>
+                Menu
+            </a>
+        </div>
+        <!--Account Dropdown-->
+        <div class="col-xs col-md-2 col-lg-1 nav-item dropdown my-account">
+            <a class="btn dropdown-toggle icon-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle icon"></i><br>
+                My Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <li><a class="dropdown-item" href="{% url 'product_management' %}">Product Management</a>
+                </li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'user_profile' %}">My Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--Bag-->
+        <div class="col-xs col-md-1 nav-item ml-auto bag">
+            <a class="{% if grand_total %} {% else %}{% endif %} btn icon-button" href="{% url 'view_bag'%}">
+                <div>
+                    <i class="fas fa-shopping-cart icon"></i><br>
+                    <span class="nav-text">{% if grand_total %}
+                        €{{ grand_total|floatformat:2 }}
+                        {% else %}
+                        €0.00
+                        {% endif %}
+                    </span>
                 </div>
-                    <!--Account Dropdown-->
-                    <div class="col-xs col-md-2 col-lg-1 nav-item dropdown my-account">
-                                <a class="btn dropdown-toggle icon-button" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle icon"></i><br>
-                                    My Account
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {% if request.user.is_authenticated %}
-                                    {% if request.user.is_superuser %}
-                                    <li><a class="dropdown-item" href="{% url 'product_management' %}">Product Management</a></li>
-                                    {% endif %}
-                                    <li><a class="dropdown-item" href="{% url 'user_profile' %}">My Profile</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a></li>
-                                    {% else %}
-                                    <li><a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a></li>
-                                    {% endif %}
-                                </ul>
-                      
-                    </div>   
-                                
-                        <!--Bag-->
-                        <div class="col-xs col-md-1 nav-item ml-auto bag">
-                            <a class="{% if grand_total %} {% else %}{% endif %} btn icon-button" href="{% url 'view_bag'%}">
-                                    <div>
-                                        <i class="fas fa-shopping-cart icon"></i><br>
-                                        <span class="nav-text">{% if grand_total %}
-                                            €{{ grand_total|floatformat:2 }}
-                                            {% else %}
-                                            €0.00
-                                            {% endif %}
-                                        </span>
-                                    </div>
-                                </a>
-                                </div>
-                        </div>
-                     </div>  
-                
-            </nav>
+            </a>
+        </div>
+    </div>
+</nav>

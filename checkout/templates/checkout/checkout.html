@@ -7,98 +7,93 @@
 {% endblock %}
 
 {% block content %}
-
 <h2>Checkout</h2>
-
-
+<!--Bag contents-->
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-6" id="order-summary">
-        <h3>Order Summary: <strong>{{ product_count }}</strong> items in shoppingbag</h3>
-        {% for item in bag_items %}
-        <div class="row">
-            <div class="col-4">
-                <a href="{% url 'product_detail' item.product.id %}">
-                    <img class="image-s" src="{{ item.product.image.url }}" alt="{{ product.name }}">
-                </a>
+            <h3>Order Summary: <strong>{{ product_count }}</strong> items in shoppingbag</h3>
+            {% for item in bag_items %}
+            <div class="row">
+                <div class="col-4">
+                    <a href="{% url 'product_detail' item.product.id %}">
+                        <img class="image-s" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                    </a>
+                </div>
+                <div class="col-4 product-name">
+                    <h4>{{ item.product.name }}</h4>
+                    <p>Quantity: {{ item.quantity }}</p>
+                </div>
+                <div class="col-4 price">
+                    <p class="right">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                </div>
             </div>
-            <div class="col-4 product-name">
-                <h4>{{ item.product.name }}</h4>
-                <p>Quantity: {{ item.quantity }}</p>
-            </div>
-            <div class="col-4 price">
-                <p class="right">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+            {% endfor %}
+            <hr>
+            <div class="row order-total">
+                <div class="col">
+                    <p class="right">Order Total: {{ total | floatformat:2 }}</p>
+                    <p class="right">Delivery: {{ delivery | floatformat:2 }}</p>
+                    <p class="right"><strong>Grand Total: {{ grand_total | floatformat:2 }}</strong></p>
+                    <hr>
+                </div>
             </div>
         </div>
-        {% endfor %}
-        <hr>
-        <div class="row order-total">
-        <div class="col">
-            <p class="right">Order Total: {{ total | floatformat:2 }}</p>
-            <p class="right">Delivery: {{ delivery | floatformat:2 }}</p>
-            <p class="right"><strong>Grand Total: {{ grand_total | floatformat:2 }}</strong></p>
+        <!--Order Form-->
+        <div class="col-12 col-md-6">
+            <h3>Please fill out the form below to complete your order</h3>
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Details</legend>
+                    {{ order_form.full_name | as_crispy_field }}
+                    {{ order_form.email | as_crispy_field }}
+                    {{ order_form.phone_number | as_crispy_field }}
+                </fieldset>
+                <fieldset>
+                    <legend>Delivery</legend>
+                    {{ order_form.city | as_crispy_field }}
+                    {{ order_form.street_address | as_crispy_field }}
+                    {{ order_form.house_number | as_crispy_field }}
+                    {{ order_form.addition | as_crispy_field }}
+                    {{ order_form.postcode | as_crispy_field }}
+                    {{ order_form.country | as_crispy_field }}
+                    <div>
+                        {% if user.is_authenticated %}
+                        <label class="form-check-label" for="id-save-info">Save this delivery information to my
+                            profile</label>
+                        <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
+                        {% else %}
+                        <label class="form-check-label" for="id-save-info">
+                            <a href="{% url 'account_signup' %}">Create an account</a>,
+                            <a href="{% url 'account_login' %}">login</a> to save this information or
+                            <a href="">Continue without account</a>
+                        </label>
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <fieldset class="stripe-payment">
+                    <legend>Payment</legend>
+                    <div id="card-element" class="stripe-style-input"></div>
+                    <div id="card-errors" role="alert"></div>
+                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                </fieldset>
+                <div class="row center">
+                    <div class="col">
+                        <a href="{% url 'view_bag' %}" class="btn basic-button">Adjust Bag</a>
+                    </div>
+                    <div class="col">
+                        <button type="submit" id="submit-button" class="btn basic-button">Complete Order</button>
+                    </div>
+                </div>
+                <br class="margin-bottom">
+                <div class="row center">
+                    <p>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></p>
+                </div>
+            </form>
             <hr>
         </div>
-        </div>
     </div>
-
-
-<div class="col-12 col-md-6">
-<h3>Please fill out the form below to complete your order</h3>
-<form action="{% url 'checkout' %}" method="POST" id="payment-form">
-    {% csrf_token %}
-        <fieldset>
-            <legend>Details</legend>
-                {{ order_form.full_name | as_crispy_field }}
-                {{ order_form.email | as_crispy_field }}
-                {{ order_form.phone_number | as_crispy_field }}
-        </fieldset>
-       
-        <fieldset>
-            <legend>Delivery</legend>
-                {{ order_form.city | as_crispy_field }}
-                {{ order_form.street_address | as_crispy_field }}
-                {{ order_form.house_number | as_crispy_field }} 
-                {{ order_form.addition | as_crispy_field }}
-                {{ order_form.postcode | as_crispy_field }}
-                {{ order_form.country | as_crispy_field }}
-                        <div>
-							{% if user.is_authenticated %}
-								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                                <input class="form-check-input" type="checkbox" id="id-save-info" name="save-info" checked>
-							{% else %}
-								<label class="form-check-label" for="id-save-info">
-                                    <a  href="{% url 'account_signup' %}">Create an account</a>,
-                                    <a  href="{% url 'account_login' %}">login</a> to save this information or
-                                    <a  href="">Continue without account</a>
-                                </label>
-							{% endif %}
-						</div>
-                    </fieldset>
-                   
-                    <fieldset class="stripe-payment">
-                        <legend>Payment</legend>
-                        <div id="card-element" class="stripe-style-input"></div>
-                        <div id="card-errors" role="alert"></div>
-                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                    </fieldset>
-
-                    <div class="row center"> 
-                        <div class="col"> 
-                            <a href="{% url 'view_bag' %}" class="btn basic-button">Adjust Bag</a>
-                        </div>  
-                        <div class="col">             
-                            <button type="submit" id="submit-button" class="btn basic-button">Complete Order</button>
-                        </div>
-                    </div>
-                    <br class="margin-bottom">
-                    <div class="row center">
-                        <p>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></p>
-                    </div>
-                </form>
-                <hr>
-             </div>
-</div>
 </div>
 {% endblock %}
 
