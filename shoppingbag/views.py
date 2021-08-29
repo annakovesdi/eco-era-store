@@ -34,6 +34,7 @@ def add_to_bag(request, item_id):
 
 def add_wipes_to_bag(request, item_id):
     wipe = get_object_or_404(Product, pk=item_id)
+    print(wipe)
     bag = request.session.get('bag', {})
     quantity = int(request.POST.get('quantity'))
     oil = get_object_or_404(Product, name="oil")
@@ -41,16 +42,16 @@ def add_wipes_to_bag(request, item_id):
     spray = get_object_or_404(Product, name="spray")
     print(spray)
 
-    if oil or spray:
-        print("There was oil or spray in post!")
-        bag[item_id] = 1
-        bag[oil.id] = 1
-        bag[spray.id] = 1
+    if request.method == 'POST':
+        if oil or spray:
+            print("There was oil or spray in post!")
+            bag[wipe.item_id] = quantity
+            bag[oil.id] = 1
+            bag[spray.id] = 1
 
     
     request.session['bag'] = bag
-
-    return render(request, "shoppingbag/bag.html")
+    return redirect(reverse('view_bag'))
 
 
 
