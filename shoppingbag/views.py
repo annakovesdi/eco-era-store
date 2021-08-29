@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
-from products.models import Product
+from products.models import Product, Category
 # Create your views here.
 
 
@@ -30,6 +30,28 @@ def add_to_bag(request, item_id):
     
     request.session['bag'] = bag
     return redirect('products')
+
+
+def add_wipes_to_bag(request, item_id):
+    wipe = get_object_or_404(Product, pk=item_id)
+    bag = request.session.get('bag', {})
+    quantity = int(request.POST.get('quantity'))
+    oil = get_object_or_404(Product, name="oil")
+    print(oil)
+    spray = get_object_or_404(Product, name="spray")
+    print(spray)
+
+    if oil or spray:
+        print("There was oil or spray in post!")
+        bag[item_id] = 1
+        bag[oil.id] = 1
+        bag[spray.id] = 1
+
+    
+    request.session['bag'] = bag
+
+    return render(request, "shoppingbag/bag.html")
+
 
 
 # Adjust items in shopping bag

@@ -39,6 +39,9 @@
 .add-to-bag {
     margin: auto;
     align-items: center;
+    --bs-gutter-x: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .add-button {
@@ -66,6 +69,20 @@
 
 .form-check-input[type=checkbox] {
     border-radius: 0;
+}
+
+.padding {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.dropdown-form {
+    border: 1px solid #c2bda9;
+}
+
+.dropdown-toggle:active,
+.dropdown-toggle:focus {
+    box-shadow: none;
 }
 
 /*----------------------Media Queries*/

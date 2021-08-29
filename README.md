@@ -10,20 +10,21 @@ x-bug stripe - form did not submit with anchor tag, only with button.
 x-checkout form: error message does not disappear after error is fixed
 x-add countryselect dropdown 
 -email address in shipping info js and webhooks
--finish default name and email address in profile 
+x-finish default name and email address in profile 
 x-toast succesfully added product click on picture takes you to product
 x-products too small on lg
 -quantity on oder history form-how?
 
--SOLD OUT tioggler button for product management
+x-SOLD OUT tioggler button for product management
 x-giftcard 
 -discount combi items
--more images
--images obligatory
+x-more images
+x-images obligatory
 xreadme write it!
 xinstagram integration on home page
 -password change 
 xfooter
+-footer crawls up when product sold out- container bigger then content 
 
 real emails through django
 
