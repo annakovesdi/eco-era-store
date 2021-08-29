@@ -26,14 +26,8 @@ def all_products(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     products = Product.objects.all()
-    oils_category = Category.objects.get(name='oils')
-    sprays_category = Category.objects.get(name='sprays')
-    oils = products.filter(category__name=oils_category)
-    sprays = products.filter(category__name=sprays_category)
     context = {
         'product': product,
-        'oils': oils,
-        'sprays': sprays,
     }
     return render(request, "products/product_detail.html", context)
 

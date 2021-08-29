@@ -42,7 +42,7 @@
                 <h4>{{ item.product.name }}</h4>
             </div>
             <div class="col auto d-none d-md-block">
-                <p>Quantity: {{ item.quantity }}</p>
+                <p class="center">{{ item.quantity }}</p>
             </div>
             <div class="col price">
                 <p class="right">${{ item.product.price | calc_subtotal:item.quantity }}</p>
