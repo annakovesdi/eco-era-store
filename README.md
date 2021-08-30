@@ -124,7 +124,8 @@ lambdatest.com for static testing
 Chrome dev tools for manual testing
 
 <h2>Testing</h2>
-Testing information can be found in the TESTING.md file
+
+[Testing information can be found in the TESTING.md file](TESTING.md)
 
 <h2>Deployment</h2>
 The site is deployed through Heroku, with staticfiles stored in Amazon Web Services and code version control and storage in GitHub.
