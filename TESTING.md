@@ -189,21 +189,35 @@ This is possible for now, but this functionality is not yet fortified in the bac
 
 Step by step, I will guide you through the pages, and describe bugs that I fixed and the functionality of the finished site.
 
-Home
-The home page displays the navigation menu, a Hero video (an ad of eco era store) and the instagram feed of the shop. Instagram is very important for this shop, so displaying the feed on the home page will make people feel right at home, or get newbies to maybe follow the page after seeing a preview. 
+<h3>Home</h3>
 
-Products
+The home page displays the navigation menu, a hero video (an ad of eco era store) and the instagram feed of the shop. Instagram is very important for this shop, so displaying the feed on the home page will make people feel right at home, or get newbies to maybe follow the page after seeing a preview. The controls of Vimeo and the ads of Juicy will disappear for a paying customer.
 
+![Home page screenshot](https://eco-era-store.s3.eu-central-1.amazonaws.com/media/home.png "Home Page Screenshot")
 
+<h3>Products</h3>
 
-Sign Up, Log In an Log Out
-where the user can sign up 
+The products are displayed in cards and are searchable under their category names in the nav-bar. They display their price and name at all times. On desktop there are see more/add to bag buttons, for fast adding the product. On the mobile site the picture is clickable to see more. 
+There is an all products link in the navbar that shows all products in one page. The products all have a picture, name, price, category and short+long descriptions. The page for a single item shows all this information. The model for the products already has more images, but they are not yet integrated in the html - so uploading more then one image does not make sense yet. There was just no time left to finish this, but visibility of more then one image wil come asap. 
 
+![Category Wipes products screenshot](https://eco-era-store.s3.eu-central-1.amazonaws.com/media/category-wipes.png "Category Wipes products screenshot")
+
+<h3>Sign Up, Log In an Log Out</h3>
+
+All this is handled by Allauth - 
+- Signup 
+- E-mail address management (multiple e-mail addresses, setting a primary)
+- Password forgotten flow
+- E-mail address verification flow
+To make everything work completely, sending mails through Django should be formatted. this is not yet the case because it should be done with the real email of eco era store.
+In the future it is important to also integrate the social account functionality of Allauth for this project, since most customers will come to the site from instagram. But again, in the time frame provided i  did not get the chance to tackle that. 
+
+![Sign Up page screenshot](https://eco-era-store.s3.eu-central-1.amazonaws.com/media/sign-in.png "Sign Up page screenshot")
 
 
 
 Profile
-where the logged in user can see their recipes and edit their name, password, email address or delete the profile and all their recipes
+bug - not all data is saved, full name does not show up on checkout form. 
 
 Profile
 

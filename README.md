@@ -128,22 +128,26 @@ The checkout page features a form, with delivery and billing information to fill
 All actions that a user takes are communicated through toasts. For example if a user succesfully creates a profile/adds a product to the bag etc, a success message is displayed. If a superuser starts editing a product, an information toast of the edit appears. If a user fails to pay due to a mistake in the form, an error message communicates this. 
 
 Features to implement in the future:
-Oh so many, so many.
+Oh so many, so many. Some of these things I already started building, since this will be a real website one day, for this very real company Eco Era Store. The features were not yet finished though before my deadline and too buggy to leave on the site. If the site is looked at with careful eyes, they are still in past commits and will also come back after assessment, hopefully fining real solutions for the issues. 
 
 tracking cookies alert
-forgotten password reset
-automatic email welcoming the new user
-sold out function
+automatic email sendig
+more images for a single product
+discount if you buy certain items at the same time 
 product ratings
 product comments
 ideal payment
 bancontact payment
+social accounts sign in
+
+I would like to tweak the design for the mobile page a bit. It's fine for now but i feel it could look a litte more appealing, the desktop site is somewhat better then the mobile one, and most users will probably see the site first on their phone (because of the customers arriving through instagram).
 
 <h2>Technologies used</h2>
 Gitpod to develop the website
 GitHub for version control and code hosting
 Heroku for deployment
-AWS as static database
+AWS S3 Bucket as static files database
+Heroku Postgres as database
 Google fonts for the fonts
 
 Html, Css, JavaScript and Python are the developing languages
@@ -170,26 +174,39 @@ In the settings of the Heroku app in the browser Config vars are added. Here you
 
 The SECRET_KEY is the Django secret key variable. 
 AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY are provided in your Amazon Web Services dashboard, where the static files are stored for this site. 
-DATABASE_URL is the Postgres url (...............)
+DATABASE_URL is the Postgres url of your Heroku Postgres database. 
 STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET are provided in the Stripe for developers area in your Stripe profile. 
 USE_AWS is set to true (USE_AWS=True) in the Heroku enviroment
 
-Before deploying to Heroku a Procfile (Heroku apps include a Procfile that specifies the commands that are executed by the app on startup. You can use a Procfile to declare a variety of process types, including: your app’s web server, multiple types of worker processes, a singleton process, such as a clock or tasks to run before a new release is deployed Each dyno in your app belongs to one of the declared process types, and it executes the startup command associated with that process type. The Procfile is always a simple text file that is named Procfile without a file extension) and requirements.txt file are neccesary. They are present in this project. When forking the GitHub be sure to install everything from the requirements.txt file before deploying(just run $ pip3 install -r requirements.txt in your terminal). 
+To set up your AWS S3 Bucket, you need to create one en configure it first. Read up about this process here, if you want to use AWS aswell: https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html
+
+Before deploying to Heroku a Procfile is neccasary, there is one in the project. Heroku apps include a Procfile that specifies the commands that are executed by the app on startup. You can use a Procfile to declare a variety of process types, including: your app’s web server, multiple types of worker processes, a singleton process, such as a clock or tasks to run before a new release is deployed Each dyno in your app belongs to one of the declared process types, and it executes the startup command associated with that process type. The Procfile is always a simple text file that is named Procfile without a file extension. Also a requirements.txt file is included. When forking the GitHub be sure to install everything from the requirements.txt file before deploying(just run $ pip3 install -r requirements.txt in your terminal). If you install new packages make sure to freeze them into the requirements.txt (pip3 freeze > requirements.txt)
 
 Under the Depoly tab of the Heroku app in the browser it is possible to connect a GitHub Repository to the Heroku app, and automatically deploy from the main branch. In this case every push to main will deploy a new version of this app. Deploys happen automatically: be sure that this branch in GitHub is always in a deployable state and any tests have passed before you push.
 
 Be sure to create a .gitignore file that hides sensitive information from deployment. Always check with $ git status that your sensitive files are not pushed to GitHub and Heroku. A gitignore file specifies intentionally untracked files that Git should ignore.
 
-The site is now live at https://eco-era-store.herokuapp.com/
+This site is now live at https://eco-era-store.herokuapp.com/
 
 Credits
-Most of the credits this learning season go to Code Institute. By reviewing the mini-projects I created a lot of this site. Of course, there were lots of other helpers too. They are listed here in no particular order.
+Most of the credits this learning season go to Code Institute. By reviewing the mini-projects and Boutique Ado Project I created a lot of this site. Without the tutorials and step by step guides this project would be exactly nowhere. 
 
-Read the book "A smarter way to learn Python" by Mark Myers
-Documentation Django
-Documentation Bootstrap
-Tutors helping along the way. most times i solved the issues myself after being helped on the way by a tutor. Tutor help was contacted lot's of times throughout my project. 
+Of course, there were lots of other helpers too. They are listed here in no particular order.
 
+- Read the book "A smarter way to learn Python" by Mark Myers
+- Documentation Django
+- Documentation Bootstrap
+- Documentation Heroku
+- Documentation AWS
+- Documentation Stripe
+- Markdown cheat sheet
+- Mentoring help for final deployment issues
+- Tutors helping along the way. Most times i solved the issues myself after being helped on the way by a tutor. Tutor help was contacted lots of times throughout my project. 
+- And ofcourse reading through thousands of Stackoverflow questions and explanations that helped me understand what i was actually trying to do. If i copied code, the link is above it in the project. It did not happen alot though - the project is too specific to be able to use others code, who were doing completely other things. 
+
+It was quite an extensive project that i needed to finish in a really short time, and being new and fresh to Django I got done what i could in the time I had. I want to continue on this site end build it up to a fully functional, beautiful Django app, that it has the potential to become. 
+
+*Pictures, text and products*
 Eco Era Store 
 Text, Images and Concept all copyright of Eco Era Store 
 Promo video by Anna Kovesdi, intellectual property of Eco Era Store
