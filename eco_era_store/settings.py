@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
-from django.contrib.auth.models import User
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -231,13 +230,3 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-
-if not User.objects.filter(is_superuser=True).first():
-    user = User.objects.create(
-        username='admin',
-        email='admin@mywebsite.com',
-        is_superuser=True,
-    )
-    user.set_password('website01')
-    user.save()
- 
