@@ -1,3 +1,6 @@
+<h2>Currently this live site is not populated with data.<h2>
+
+
 <h1>Eco Era Store</h1>
 
 **Webshop for handmade ecological baby/mama products. The website allows you to get to know the products, the philosophy, the policy on a simple and no-nonsense easily viewable site. Checkout for bought items is handled by stripe, static files storage by AWS, and deployment/Postgres database through Heroku.**
